@@ -1,0 +1,9 @@
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\CrystalClear.exe.config
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\CrystalClear.exe
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\CrystalClear.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.Form1.resources
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.Properties.Resources.resources
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.csproj.GenerateResource.cache
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.exe
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\obj\Debug\CrystalClear.pdb
