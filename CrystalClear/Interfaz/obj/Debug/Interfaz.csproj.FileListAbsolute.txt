@@ -1,0 +1,8 @@
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\obj\Debug\Interfaz.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\bin\Debug\Interfaz.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\bin\Debug\Interfaz.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\bin\Debug\Metodos.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\bin\Debug\Metodos.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\obj\Debug\Interfaz.csproj.CopyComplete
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\obj\Debug\Interfaz.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Interfaz\obj\Debug\Interfaz.pdb
