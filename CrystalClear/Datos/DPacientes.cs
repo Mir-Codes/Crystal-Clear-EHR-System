@@ -9,7 +9,7 @@ namespace Datos
 
     using System.Data; //para manejar datos de SQL
     using System.Data.SqlClient; //para poder enviar comandos de la app a el servidor SQL server
-    class DPacientes
+    public class DPacientes
     {
         private string _Cedula;
         private string _Nombre;
@@ -395,7 +395,7 @@ namespace Datos
 
         //Metodo Mostrar
 
-        public DataTable Mostrar(DPacientes pacientes) //aqui se mostraran todos los registros Pacientes en una tabla
+        public DataTable Mostrar() //aqui se mostraran todos los registros Pacientes en una tabla
         {
             DataTable DtResultado = new DataTable("Pacientes");
 
