@@ -67,11 +67,18 @@ namespace Metodos
             return Obj.Eliminar(Obj);
         }
 
-        //Metodo Mostrar que llama al metodo Mostrar de la clase DPaciente de la capa Datos
+        ////Metodo Mostrar que llama al metodo Mostrar de la clase DPaciente de la capa Datos
+        //public static DataTable Mostrar()
+        //{
+        //    return new DPacientes().Mostrar();
+        //}
 
-        public static DataTable Mostrar()
+
+        //probar esta nueva version, NUEVA VERSION
+        public new static List<DPacientes> Mostrar(string TextoBuscar)
         {
-            return new DPacientes().Mostrar();
+            DPacientes Objeto = new DPacientes();
+            return Objeto.Mostrar(TextoBuscar);
         }
 
         //Metodo BuscarNombre que llama al metodo BuscarNombre de la clase DPaciente de la capa Datos
@@ -82,6 +89,14 @@ namespace Metodos
             Obj.TextoBuscar = textobuscar;
             return Obj.BuscarNombre(Obj);
         }
+
+
+        public static List<DPacientes> Buscar_Cedula(string TextoBuscar)
+        {
+            DPacientes Objeto = new DPacientes();
+            return Objeto.Buscar_Cedula(TextoBuscar);
+        }
+
 
     }
 }

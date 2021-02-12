@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data; //para manejar datos de SQL
+using System.Data.SqlClient; //para poder enviar comandos de la app a el servidor SQL server
+
 namespace Datos
 {
 
-    using System.Data; //para manejar datos de SQL
-    using System.Data.SqlClient; //para poder enviar comandos de la app a el servidor SQL server
-    public class DPacientes
+    public class DPacientes:Conexion
     {
         private string _Cedula;
         private string _Nombre;
@@ -395,30 +396,60 @@ namespace Datos
 
         //Metodo Mostrar
 
-        public DataTable Mostrar() //aqui se mostraran todos los registros Pacientes en una tabla
+        public List<DPacientes> Mostrar(string TextoBuscar)
         {
             DataTable DtResultado = new DataTable("Pacientes");
+            SqlConnection SqlConectar = new SqlConnection();
+            List<DPacientes> ListaGenerica = new List<DPacientes>();
 
-            SqlConnection SqlCon = new SqlConnection();
             try
             {
-                SqlCon.ConnectionString = Conexion.CadenaConexion;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spmostrar_pacientes";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
+                SqlConectar.ConnectionString = Conexion.CadenaConexion;
+                SqlDataReader LeerFilas;
+                SqlCommand SqlComando = new SqlCommand();
+                SqlComando.Connection = SqlConectar;
+                SqlComando.CommandText = "spmostrar_pacientes";
+                SqlComando.CommandType = CommandType.StoredProcedure;
+                //esto es cuando tiene alguna condicion
+                SqlComando.Parameters.AddWithValue("@TextoBuscar", TextoBuscar);
 
-                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
-                SqlDat.Fill(DtResultado);
+                SqlConectar.Open();
+
+                LeerFilas = SqlComando.ExecuteReader();
+
+                while (LeerFilas.Read())
+                {
+                    ListaGenerica.Add(new DPacientes
+                    {
+                        Cedula = LeerFilas.GetString(0),
+                        Nombre = LeerFilas.GetString(1),
+                        Fechanac = LeerFilas.GetDateTime(2),
+                        Sexo = LeerFilas.GetString(3),
+                        Estcivil = LeerFilas.GetString(4),
+                        Lugarnac = LeerFilas.GetString(5),
+                        Direccion = LeerFilas.GetString(6),
+                        Ocupacion = LeerFilas.GetString(7),
+                        Telefono = LeerFilas.GetString(8),
+                        Correo = LeerFilas.GetString(9),
+                        Estadovivomuerto = LeerFilas.GetString(10),
+                        Imagepath = LeerFilas.GetString(11),
+                        Peso = LeerFilas.GetString(12),
+                        Talla = LeerFilas.GetString(13)
+                    });
+                }
+                LeerFilas.Close();
+                SqlConectar.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                DtResultado = null;
+                ListaGenerica = null;
+                
             }
-            return DtResultado;
 
-        }//fin de la funcion mostrar
-         
+            return ListaGenerica;
+
+        }
+
         //Metodo BuscarNombre
 
         public DataTable BuscarNombre (DPacientes pacientes)
@@ -451,10 +482,70 @@ namespace Datos
                 DtResultado = null;
             }
             return DtResultado;
+           
+
 
         }//fin funcion buscarnombre
 
 
+
+
+        //Buscar
+        public List<DPacientes> Buscar_Cedula(string TextoBuscar)
+        {
+            DataTable DtResultado = new DataTable("Pacientes");
+            SqlConnection SqlConectar = new SqlConnection();
+            List<DPacientes> ListaGenerica = new List<DPacientes>();
+
+            try
+            {
+                SqlConectar.ConnectionString = Conexion.CadenaConexion;
+                SqlDataReader LeerFilas;
+                SqlCommand SqlComando = new SqlCommand();
+                SqlComando.Connection = SqlConectar;
+                SqlComando.CommandText = "spbuscar_paciente_cedula";
+                SqlComando.CommandType = CommandType.StoredProcedure;
+                //esto es cuando tiene alguna condicion
+                SqlComando.Parameters.AddWithValue("@textobuscar", TextoBuscar);
+
+                SqlConectar.Open();
+
+                LeerFilas = SqlComando.ExecuteReader();
+
+                while (LeerFilas.Read())
+                {
+                    ListaGenerica.Add(new DPacientes
+                    {
+                    
+                        Cedula = LeerFilas.GetString(1),
+                        Nombre = LeerFilas.GetString(2),
+                        Fechanac = LeerFilas.GetDateTime(3),
+                        Sexo = LeerFilas.GetString(4),
+                        Estcivil = LeerFilas.GetString(5),
+                        Lugarnac = LeerFilas.GetString(6),
+                        Direccion = LeerFilas.GetString(7),
+                        Ocupacion = LeerFilas.GetString(8),
+                        Telefono = LeerFilas.GetString(9),
+                        Correo = LeerFilas.GetString(10),
+                        Estadovivomuerto = LeerFilas.GetString(11),
+                        Imagepath = LeerFilas.GetString(12),
+                        Peso = LeerFilas.GetString(13),
+                        Talla = LeerFilas.GetString(14)
+
+
+                    });
+                }
+                LeerFilas.Close();
+                SqlConectar.Close();
+            }
+            catch (Exception)
+            {
+                ListaGenerica = null;
+            }
+
+            return ListaGenerica;
+
+        }
 
 
     }

@@ -1,0 +1,13 @@
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.csprojAssemblyReference.cache
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.frmPacientes.resources
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.csproj.GenerateResource.cache
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Presentacion.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Presentacion.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Metodos.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Datos.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Metodos.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Datos.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.dll
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\bin\Debug\Presentacion.dll.config

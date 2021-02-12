@@ -82,5 +82,11 @@
   <ItemGroup>
     <Folder Include="NewFolder1\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Presentacion\Presentacion.csproj">
+      <Project>{d658c315-88dd-4bd3-952e-a1c24828e6c2}</Project>
+      <Name>Presentacion</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

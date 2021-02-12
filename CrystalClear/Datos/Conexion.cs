@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    class Conexion 
+    public class Conexion 
     {
 
         //Aqui se establece la conexion con la DB
 
-        public static string CadenaConexion = "Data Source=MIRLU\\SQLEXPRESS; Initial Catalog=CrystalClearBD; Integrate Security=true";
-
+        protected static string CadenaConexion = "Data Source= MIRLU\\SQLEXPRESS; Initial Catalog=CrystalClearBD; Integrated Security=true";
 
         //datasource laptop mirlu MIRLU\\SQLEXPRESS
     }
