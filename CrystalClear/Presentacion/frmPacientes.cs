@@ -127,7 +127,7 @@ namespace Presentacion
         //Metodo BuscarCedula
         private void Buscar_Cedula()
         {
-            this.dataListado.DataSource = MPacientes.Buscar_Cedula(this.txtBuscar.Text);
+            this.dataListado.DataSource = MPacientes.BuscarCedula(this.txtBuscar.Text);
            // this.OcultarColumnas();
             lblTotal.Text = "Total Registros: " + Convert.ToString(dataListado.Rows.Count);
             

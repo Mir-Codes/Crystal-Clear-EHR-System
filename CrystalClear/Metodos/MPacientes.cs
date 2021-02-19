@@ -91,10 +91,11 @@ namespace Metodos
         }
 
 
-        public static List<DPacientes> Buscar_Cedula(string TextoBuscar)
+        public static DataTable BuscarCedula(string textobuscar)
         {
-            DPacientes Objeto = new DPacientes();
-            return Objeto.Buscar_Cedula(TextoBuscar);
+            DPacientes Obj = new DPacientes();
+            Obj.TextoBuscar = textobuscar;
+            return Obj.BuscarCedula(Obj);
         }
 
 
