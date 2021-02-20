@@ -14,9 +14,10 @@ namespace Metodos
 
         //Metodo Insertar que llama al metodo Insertar de la clase DPaciente de la capa Datos
 
-        public static string Insertar(string nombre, DateTime fechanac, string sexo, string estcivil, string lugnac, string direccion, string ocupacion, string telefono, string correo, string estadovm, string imgpath, string peso, string talla)
+        public static string Insertar(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugnac, string direccion, string ocupacion, string telefono, string correo, string estadovm, string imgpath, string peso, string talla)
         {
             DPacientes Obj = new DPacientes();
+            Obj.Cedula = cedula;
             Obj.Nombre = nombre;
             Obj.Fechanac = fechanac;
             Obj.Sexo = sexo;

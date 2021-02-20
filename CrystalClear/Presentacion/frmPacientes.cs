@@ -25,6 +25,76 @@ namespace Presentacion
             //añadir simbolitos de error
         }
 
+
+        private bool validar()
+        {
+
+            bool error = true;
+
+            if (cbCedula.SelectedIndex == -1)
+            {
+                error = false;
+                errorProvider1.SetError(cbCedula, "Seleccione el tipo de Cedula del paciente");
+            }
+            if (txtCiPaciente.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtCiPaciente, "Agrega el CI del paciente");
+            }
+            if (txtNombre.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtNombre, "Ingresa el nombre del paciente");
+            }
+            if (cbSexo.SelectedIndex == -1)
+            {
+                error = false;
+                errorProvider1.SetError(cbSexo, "Ingresa el sexo del paciente");
+            }
+            if (cbEstCivil.SelectedIndex == -1)
+            {
+                error = false;
+                errorProvider1.SetError(cbEstCivil, "Ingresa el estado civil del paciente");
+            }
+            if (txtLugarNac.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtLugarNac, "ingresa el lugar de nacimiento del paciente");
+            }
+            if (txtDireccion.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtDireccion, "ingresa la direccion del paciente");
+            }
+            if (txtTelefono.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtTelefono, "ingresa un teléfono");
+            }
+            if (txtCorreo.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtCorreo, "ingresa el correo electronico del paciente");
+            }
+            if (txtOcupacion.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtOcupacion, "ingresa la ocupacion del paciente");
+            }
+            if (txtOcupacion.Text == "")
+            {
+                error = false;
+                errorProvider1.SetError(txtOcupacion, "ingresa la ocupacion del paciente");
+            }
+            return error;
+        }
+
+        //Cuando se llenen, se retira el error
+        private void SinErrores()
+        {
+            errorProvider1.Clear();
+        }
+
         //Mostrar mensaje de confirmacion
         private void MensajeOk(string mensaje)
         {
@@ -58,11 +128,18 @@ namespace Presentacion
         //Habilitar los controles del formulario
         private void Habilitar()
         {
+            
+            this.cbCedula.Enabled = true;
             this.txtCiPaciente.Enabled = true;
             this.txtNombre.Enabled = true;
             this.cbSexo.Enabled = true;
             this.dtNacimiento.Enabled = true;
             this.txtTelefono.Enabled = true;
+            this.txtCorreo.Enabled = true;
+            this.txtOcupacion.Enabled = true;
+
+
+
             btnNuevo.Visible = false;
             PanelIngreso.Size = new Size(311, PanelIngreso.Size.Height);
         }
@@ -82,13 +159,22 @@ namespace Presentacion
         //Habilitar los botones 
         private void Botones()
         {
-            if(this.IsNuevo || this.IsEditar)
+            if(this.IsNuevo)
             {
                 this.Habilitar();
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
                 this.btnCancelar.Enabled = true;
 
+            }
+            else if (this.IsEditar)
+            {
+                this.Habilitar();
+                this.cbCedula.Enabled = false;
+                this.txtCiPaciente.Enabled = false;
+                this.btnNuevo.Enabled = false;
+                this.btnGuardar.Enabled = true;
+                this.btnCancelar.Enabled = true;
             }
             else
             {
@@ -101,17 +187,18 @@ namespace Presentacion
 
 
         //Metodo para ocultar columnas
-        //private void OcultarColumnas()
-        //{
+        private void OcultarColumnas()
+        {
+            this.dataListado.Columns[14].Visible = false; //columna TextoBuscar
+        }
 
-        //}
 
         //Metodo Mostrar
         private void Mostrar()
         {
             this.dataListado.DataSource = MPacientes.Mostrar(txtBuscar.Text);
-            //this.OcultarColumnas();
-            //dataListado.ClearSelection();
+            this.OcultarColumnas();
+            dataListado.ClearSelection();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -120,7 +207,7 @@ namespace Presentacion
         private void BuscarNombre()
         {
             this.dataListado.DataSource = MPacientes.BuscarNombre(this.txtBuscar.Text);
-            //this.OcultarColumnas();
+            this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
         }
 
@@ -128,7 +215,7 @@ namespace Presentacion
         private void Buscar_Cedula()
         {
             this.dataListado.DataSource = MPacientes.BuscarCedula(this.txtBuscar.Text);
-           // this.OcultarColumnas();
+            this.OcultarColumnas();
             lblTotal.Text = "Total Registros: " + Convert.ToString(dataListado.Rows.Count);
             
         }
@@ -145,6 +232,98 @@ namespace Presentacion
             }
         }
 
+
+
+
+        private void Guardar()
+        {
+            try
+            {
+                string Rpta = "";
+
+                if (this.IsNuevo)
+                {
+                    
+                    Rpta = MPacientes.Insertar(
+                        (this.cbCedula.Text + this.txtCiPaciente.Text),
+                        this.txtNombre.Text,
+                        Convert.ToDateTime(dtNacimiento.Text),
+                        this.cbSexo.Text,
+                        this.cbEstCivil.Text,
+                        this.txtLugarNac.Text,
+                        this.txtDireccion.Text,
+                        this.txtOcupacion.Text,
+                        this.txtTelefono.Text,
+                        this.txtCorreo.Text,
+                        "V",
+                        "ejemplo imagepath",
+                        this.txtPeso.Text,
+                        this.txtTalla.Text
+                        );
+
+
+                }
+                else
+                {
+                    //Vamos a modificar un Paciente
+                    Rpta = MPacientes.Editar(
+                        (this.cbCedula.Text + this.txtCiPaciente.Text),
+                        this.txtNombre.Text,
+                        Convert.ToDateTime(dtNacimiento.Text),
+                        this.cbSexo.Text,
+                        this.cbEstCivil.Text,
+                        this.txtLugarNac.Text,
+                        this.txtDireccion.Text,
+                        this.txtOcupacion.Text,
+                        this.txtTelefono.Text,
+                        this.txtCorreo.Text,
+                        "V",
+                        "ejemplo imagepath",
+                        this.txtPeso.Text,
+                        this.txtTalla.Text
+                        );
+                }
+                //Si la respuesta fue OK, fue porque se modificó
+                //o insertó el Trabajador
+                //de forma correcta
+                if (Rpta.Equals("Ok"))
+                {
+                    if (this.IsNuevo)
+                    {
+                        this.MensajeOk("Se insertó de forma correcta el registro");
+                    }
+                    else
+                    {
+                        this.MensajeOk("Se actualizó de forma correcta el registro");
+                        
+                    }
+
+                }
+                else
+                {
+                    //Mostramos el mensaje de error
+                    this.MensajeError(Rpta);
+                }
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
+                this.Deshabilitar();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+
+
+
+
+
+
+
         private void frmPacientes_Load(object sender, EventArgs e)
         {
             this.Mostrar();
@@ -153,7 +332,7 @@ namespace Presentacion
             cbBuscar.SelectedIndex = 1;
 
 
-            // this.OcultarColumnas();
+            this.OcultarColumnas();
 
 
             //todo esto es pa ponerle colorcitos al datagridview
@@ -187,13 +366,66 @@ namespace Presentacion
             this.Limpiar();
             this.Habilitar();
             this.cbCedula.Focus();
-            this.txtCiPaciente.Enabled = false;
+            
             //ID = 0;
+
         }
 
         private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            SinErrores();
+            if (!validar())
+            {
+                MensajeError("Falta ingresar algunos datos, serán remarcados");
+            }
+            else
+            {
+                Guardar();
+            }
+        }
+
+        private void dataListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Habilitar();
+
+            //cedula
+            string Cedula = Convert.ToString(this.dataListado.CurrentRow.Cells["Cedula"].Value);
+            this.cbCedula.Text = Cedula.Substring(0, 2);
+            this.txtCiPaciente.Text = Cedula.Remove(0, 2);
+            this.cbCedula.Enabled = false;
+            //
+
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FechaNac"].Value);
+            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
+            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["EstCivil"].Value);
+            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["LugarNac"].Value);
+            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
+            this.txtOcupacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ocupacion"].Value);
+            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
+            this.txtCorreo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Correo"].Value);
+            this.txtPeso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Peso"].Value);
+            this.txtTalla.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Talla"].Value);
+
+            this.IsEditar = true;
+            this.IsNuevo = false;
+            txtNombre.Focus();
+            Botones();
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Deshabilitar();
         }
     }
 }

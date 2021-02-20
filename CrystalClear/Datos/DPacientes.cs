@@ -104,7 +104,8 @@ namespace Datos
                 SqlParameter ParCedula = new SqlParameter();
                 ParCedula.ParameterName = "@cedula";
                 ParCedula.SqlDbType = SqlDbType.VarChar;
-                ParCedula.Direction = ParameterDirection.Output;
+                ParCedula.Size = 50;
+                ParCedula.Value = pacientes.Cedula;
                 SqlCmd.Parameters.Add(ParCedula);
 
                 SqlParameter ParNombre = new SqlParameter();

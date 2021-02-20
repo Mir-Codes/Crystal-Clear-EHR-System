@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacientes));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -44,6 +45,7 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.PanelIngreso = new System.Windows.Forms.Panel();
+            this.txtCiPaciente = new System.Windows.Forms.TextBox();
             this.txtTalla = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.txtPeso = new System.Windows.Forms.TextBox();
@@ -67,16 +69,17 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCiPaciente = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtLugarNac = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.panel4.SuspendLayout();
             this.PanelIngreso.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,14 +125,14 @@
             this.dataListado.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataListado.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataListado.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataListado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataListado.Location = new System.Drawing.Point(0, 0);
             this.dataListado.Margin = new System.Windows.Forms.Padding(4);
@@ -143,6 +146,7 @@
             this.dataListado.Size = new System.Drawing.Size(989, 637);
             this.dataListado.TabIndex = 37;
             this.dataListado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentClick);
+            this.dataListado.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellDoubleClick);
             // 
             // panel4
             // 
@@ -217,7 +221,7 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(927, 46);
+            this.btnNuevo.Location = new System.Drawing.Point(948, 46);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(33, 31);
@@ -289,6 +293,7 @@
             // PanelIngreso
             // 
             this.PanelIngreso.BackColor = System.Drawing.Color.White;
+            this.PanelIngreso.Controls.Add(this.txtCiPaciente);
             this.PanelIngreso.Controls.Add(this.txtTalla);
             this.PanelIngreso.Controls.Add(this.label12);
             this.PanelIngreso.Controls.Add(this.txtPeso);
@@ -312,7 +317,6 @@
             this.PanelIngreso.Controls.Add(this.btnGuardar);
             this.PanelIngreso.Controls.Add(this.txtNombre);
             this.PanelIngreso.Controls.Add(this.label4);
-            this.PanelIngreso.Controls.Add(this.txtCiPaciente);
             this.PanelIngreso.Controls.Add(this.label8);
             this.PanelIngreso.Controls.Add(this.txtLugarNac);
             this.PanelIngreso.Controls.Add(this.label1);
@@ -323,6 +327,19 @@
             this.PanelIngreso.Size = new System.Drawing.Size(436, 753);
             this.PanelIngreso.TabIndex = 0;
             // 
+            // txtCiPaciente
+            // 
+            this.txtCiPaciente.BackColor = System.Drawing.SystemColors.Control;
+            this.txtCiPaciente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCiPaciente.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCiPaciente.Location = new System.Drawing.Point(123, 135);
+            this.txtCiPaciente.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCiPaciente.MaxLength = 50;
+            this.txtCiPaciente.Name = "txtCiPaciente";
+            this.txtCiPaciente.Size = new System.Drawing.Size(278, 39);
+            this.txtCiPaciente.TabIndex = 113;
+            // 
             // txtTalla
             // 
             this.txtTalla.BackColor = System.Drawing.SystemColors.Control;
@@ -331,7 +348,7 @@
             this.txtTalla.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtTalla.Location = new System.Drawing.Point(223, 688);
             this.txtTalla.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTalla.MaxLength = 11;
+            this.txtTalla.MaxLength = 5;
             this.txtTalla.Name = "txtTalla";
             this.txtTalla.Size = new System.Drawing.Size(178, 39);
             this.txtTalla.TabIndex = 111;
@@ -356,7 +373,7 @@
             this.txtPeso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPeso.Location = new System.Drawing.Point(37, 688);
             this.txtPeso.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPeso.MaxLength = 11;
+            this.txtPeso.MaxLength = 5;
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(178, 39);
             this.txtPeso.TabIndex = 109;
@@ -381,7 +398,7 @@
             this.txtCorreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCorreo.Location = new System.Drawing.Point(223, 539);
             this.txtCorreo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCorreo.MaxLength = 11;
+            this.txtCorreo.MaxLength = 50;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(178, 39);
             this.txtCorreo.TabIndex = 107;
@@ -406,7 +423,7 @@
             this.txtDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtDireccion.Location = new System.Drawing.Point(36, 464);
             this.txtDireccion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtDireccion.MaxLength = 11;
+            this.txtDireccion.MaxLength = 50;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(365, 39);
             this.txtDireccion.TabIndex = 105;
@@ -431,7 +448,7 @@
             this.txtOcupacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtOcupacion.Location = new System.Drawing.Point(36, 613);
             this.txtOcupacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txtOcupacion.MaxLength = 11;
+            this.txtOcupacion.MaxLength = 10;
             this.txtOcupacion.Name = "txtOcupacion";
             this.txtOcupacion.Size = new System.Drawing.Size(365, 39);
             this.txtOcupacion.TabIndex = 101;
@@ -455,8 +472,10 @@
             this.cbEstCivil.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstCivil.FormattingEnabled = true;
             this.cbEstCivil.Items.AddRange(new object[] {
-            "Femenino",
-            "Masculino"});
+            "Soltero",
+            "Casado",
+            "Divorciado",
+            "Viudo"});
             this.cbEstCivil.Location = new System.Drawing.Point(105, 297);
             this.cbEstCivil.Margin = new System.Windows.Forms.Padding(4);
             this.cbEstCivil.Name = "cbEstCivil";
@@ -547,8 +566,8 @@
             this.cbSexo.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSexo.FormattingEnabled = true;
             this.cbSexo.Items.AddRange(new object[] {
-            "Femenino",
-            "Masculino"});
+            "F",
+            "M"});
             this.cbSexo.Location = new System.Drawing.Point(30, 297);
             this.cbSexo.Margin = new System.Windows.Forms.Padding(4);
             this.cbSexo.Name = "cbSexo";
@@ -583,6 +602,7 @@
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnGuardar
             // 
@@ -600,6 +620,7 @@
             this.btnGuardar.TabIndex = 10;
             this.btnGuardar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardar.UseVisualStyleBackColor = false;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // txtNombre
             // 
@@ -626,19 +647,6 @@
             this.label4.TabIndex = 32;
             this.label4.Text = "Nombre:";
             // 
-            // txtCiPaciente
-            // 
-            this.txtCiPaciente.BackColor = System.Drawing.SystemColors.Control;
-            this.txtCiPaciente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCiPaciente.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCiPaciente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCiPaciente.Location = new System.Drawing.Point(125, 135);
-            this.txtCiPaciente.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCiPaciente.MaxLength = 9;
-            this.txtCiPaciente.Name = "txtCiPaciente";
-            this.txtCiPaciente.Size = new System.Drawing.Size(276, 39);
-            this.txtCiPaciente.TabIndex = 1;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -659,7 +667,7 @@
             this.txtLugarNac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtLugarNac.Location = new System.Drawing.Point(36, 382);
             this.txtLugarNac.Margin = new System.Windows.Forms.Padding(4);
-            this.txtLugarNac.MaxLength = 11;
+            this.txtLugarNac.MaxLength = 50;
             this.txtLugarNac.Name = "txtLugarNac";
             this.txtLugarNac.Size = new System.Drawing.Size(365, 39);
             this.txtLugarNac.TabIndex = 5;
@@ -675,6 +683,10 @@
             this.label1.Size = new System.Drawing.Size(199, 32);
             this.label1.TabIndex = 58;
             this.label1.Text = "Lugar Nacimiento:";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // frmPacientes
             // 
@@ -693,6 +705,7 @@
             this.panel4.PerformLayout();
             this.PanelIngreso.ResumeLayout(false);
             this.PanelIngreso.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -724,7 +737,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtCiPaciente;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtLugarNac;
         private System.Windows.Forms.Label label1;
@@ -740,5 +752,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox txtCiPaciente;
     }
 }
