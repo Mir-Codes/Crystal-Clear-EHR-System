@@ -321,6 +321,59 @@ namespace Presentacion
         }
 
 
+        private void EliminarItems()
+        {
+
+            try
+            {
+                int NumeroSeleccionado = 0;
+                DialogResult Opcion;
+                foreach (DataGridViewRow item in this.dataListado.SelectedRows)
+                {
+                    NumeroSeleccionado++;
+                }
+                if (NumeroSeleccionado > 1)
+                {
+                    Opcion = MessageBox.Show("¿Realmente desea eliminar los " + NumeroSeleccionado + " registros de pacientes?", "Sistema Crystal Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                }
+                else
+                {
+                    Opcion = MessageBox.Show("¿Realmente desea eliminar el registro del paciente?", "Sistema Crystal Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                }
+
+                if (Opcion == DialogResult.OK)
+                {
+                    string Rpta = "";
+
+                    foreach (DataGridViewRow item in this.dataListado.SelectedRows)
+                    {
+                        Rpta = MPacientes.Eliminar(Convert.ToString(item.Cells["Cedula"].Value));
+                    }
+
+                    if (Rpta.Equals("Ok"))
+                    {
+                        if (NumeroSeleccionado > 1)
+                        {
+                            this.MensajeOk("Se eliminaron correctamente los registros de pacientes");
+                        }
+                        else
+                        {
+                            this.MensajeOk("Se eliminó correctamente el registro del paciente");
+                        }
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
         private void AnularItems()
         {
 
@@ -334,11 +387,11 @@ namespace Presentacion
                 }
                 if (NumeroSeleccionado > 1)
                 {
-                    Opcion = MessageBox.Show("¿Realmente desea anular los " + NumeroSeleccionado + " registros de pacientes?", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    Opcion = MessageBox.Show("¿Realmente desea anular los " + NumeroSeleccionado + " registros de pacientes?", "Sistema Crystal Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 }
                 else
                 {
-                    Opcion = MessageBox.Show("¿Realmente desea anular el registro del paciente?", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    Opcion = MessageBox.Show("¿Realmente desea anular el registro del paciente?", "Sistema Crystal Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 }
 
                 if (Opcion == DialogResult.OK)
@@ -440,15 +493,15 @@ namespace Presentacion
             //todo esto es pa ponerle colorcitos al datagridview
 
             dataListado.BorderStyle = BorderStyle.None;
-            dataListado.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(209, 247, 195);
+            dataListado.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(189, 238, 240); //clarito
             dataListado.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataListado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(127, 207, 74);
+            dataListado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(91, 207, 204);  //resalto
             dataListado.DefaultCellStyle.SelectionForeColor = Color.White;
             dataListado.BackgroundColor = Color.White;
 
             dataListado.EnableHeadersVisualStyles = false;
             dataListado.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(96, 191, 33);  //69, 204, 20
+            dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 148, 145);  //oscuro
             dataListado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             dataListado.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Regular);
@@ -533,6 +586,11 @@ namespace Presentacion
         private void btnAnular_Click(object sender, EventArgs e)
         {
             AnularItems();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            EliminarItems();
         }
     }
 }
