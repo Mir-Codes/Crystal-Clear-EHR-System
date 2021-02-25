@@ -200,6 +200,7 @@ namespace Presentacion
             this.OcultarColumnas();
             dataListado.ClearSelection();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+            Anulados();
         }
 
 
@@ -209,6 +210,7 @@ namespace Presentacion
             this.dataListado.DataSource = MPacientes.BuscarNombre(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
+            Anulados();
         }
 
         //Metodo BuscarCedula
@@ -217,6 +219,7 @@ namespace Presentacion
             this.dataListado.DataSource = MPacientes.BuscarCedula(this.txtBuscar.Text);
             this.OcultarColumnas();
             lblTotal.Text = "Total Registros: " + Convert.ToString(dataListado.Rows.Count);
+            Anulados();
             
         }
 
@@ -317,6 +320,105 @@ namespace Presentacion
             }
         }
 
+
+        private void AnularItems()
+        {
+
+            try
+            {
+                int NumeroSeleccionado = 0;
+                DialogResult Opcion;
+                foreach (DataGridViewRow item in this.dataListado.SelectedRows)
+                {
+                    NumeroSeleccionado++;
+                }
+                if (NumeroSeleccionado > 1)
+                {
+                    Opcion = MessageBox.Show("¿Realmente desea anular los " + NumeroSeleccionado + " registros de pacientes?", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                }
+                else
+                {
+                    Opcion = MessageBox.Show("¿Realmente desea anular el registro del paciente?", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                }
+
+                if (Opcion == DialogResult.OK)
+                {
+                    string Rpta = "";
+
+                    foreach (DataGridViewRow item in this.dataListado.SelectedRows)
+                    {
+                        Rpta = MPacientes.Anular(Convert.ToString(item.Cells["Cedula"].Value));
+                    }
+
+                    if (Rpta.Equals("OK"))
+                    {
+                        if (NumeroSeleccionado > 1)
+                        {
+                            this.MensajeOk("Se anularon correctamente los registros de pacientes");
+                        }
+                        else
+                        {
+                            this.MensajeOk("Se anuló correctamente el registro del paciente");
+                        }
+                    }
+                    else
+                    {
+                        this.MensajeError(Rpta);
+                    }
+
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+
+        private void Anulados()
+        {
+            string estadotabla;
+
+            for (int fila = 0; fila <= dataListado.Rows.Count - 1; fila++)
+            {
+                estadotabla = Convert.ToString(this.dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Value);
+
+                if (estadotabla == "M")
+                {
+                    dataListado.Rows[fila].Cells["Cedula"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Nombre"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["FechaNac"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Sexo"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["EstCivil"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["LugarNac"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Direccion"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Ocupacion"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Telefono"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Correo"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Peso"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["Talla"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["imagepath"].Style.ForeColor = Color.Red;
+
+                    dataListado.Rows[fila].Cells["Cedula"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Nombre"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["FechaNac"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Sexo"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["EstCivil"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["LugarNac"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Direccion"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Ocupacion"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Telefono"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Correo"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Peso"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["Talla"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["imagepath"].Style.SelectionBackColor = Color.Brown;
+
+                }
+            }
+        }
 
 
 
@@ -426,6 +528,11 @@ namespace Presentacion
             this.Botones();
             this.Limpiar();
             this.Deshabilitar();
+        }
+
+        private void btnAnular_Click(object sender, EventArgs e)
+        {
+            AnularItems();
         }
     }
 }

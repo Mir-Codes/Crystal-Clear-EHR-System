@@ -100,5 +100,13 @@ namespace Metodos
         }
 
 
+        public static string Anular(string ci)
+        {
+            DPacientes Objeto = new DPacientes();
+            Objeto.Cedula = ci;
+            return Objeto.Anular(Objeto);
+        }
+
+
     }
 }

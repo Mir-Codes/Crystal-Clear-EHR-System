@@ -553,7 +553,7 @@ namespace Datos
         //        {
         //            ListaGenerica.Add(new DPacientes
         //            {
-                    
+
         //                Cedula = LeerFilas.GetString(1),
         //                Nombre = LeerFilas.GetString(2),
         //                Fechanac = LeerFilas.GetDateTime(3),
@@ -583,6 +583,55 @@ namespace Datos
         //    return ListaGenerica;
 
         //}
+
+
+        public string Anular(DPacientes Paciente)
+        {
+            string respuesta = "";
+            SqlConnection SqlConectar = new SqlConnection();
+
+            try
+            {
+                //conexion con la Base de Datos
+                SqlConectar.ConnectionString = Conexion.CadenaConexion;
+                SqlConectar.Open();
+
+                //comandos
+                SqlCommand SqlComando = new SqlCommand();
+                SqlComando.Connection = SqlConectar;
+                SqlComando.CommandText = "spanular_pacientes";
+                SqlComando.CommandType = CommandType.StoredProcedure;
+
+                //parametros
+
+                //parametro id
+                SqlParameter Parametro_Id_Paciente = new SqlParameter();
+                Parametro_Id_Paciente.ParameterName = "@cedula";
+                Parametro_Id_Paciente.SqlDbType = SqlDbType.VarChar;
+                Parametro_Id_Paciente.Value = Paciente.Cedula;
+                SqlComando.Parameters.Add(Parametro_Id_Paciente);
+
+                //ejecuta y lo envia en comentario
+                respuesta = SqlComando.ExecuteNonQuery() == 1 ? "OK" : "No se anulo el Registro del paciente";
+
+            }
+            catch (Exception excepcion)
+            {
+                respuesta = excepcion.Message;
+            }
+
+            //se cierra la conexion de la Base de Datos
+            finally
+            {
+                if (SqlConectar.State == ConnectionState.Open)
+                {
+                    SqlConectar.Close();
+                }
+            }
+            return respuesta;
+
+        }
+
 
 
     }
