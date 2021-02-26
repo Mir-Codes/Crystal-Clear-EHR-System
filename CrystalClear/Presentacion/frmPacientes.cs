@@ -18,11 +18,13 @@ namespace Presentacion
 
         private bool IsEditar = false;
 
+        LimitantesDeIngreso valid = new LimitantesDeIngreso();
+
         public frmPacientes()
         {
             InitializeComponent();
-            //añadir tool tips
-            //añadir simbolitos de error
+            
+
         }
 
 
@@ -189,7 +191,7 @@ namespace Presentacion
         //Metodo para ocultar columnas
         private void OcultarColumnas()
         {
-            this.dataListado.Columns[14].Visible = false; //columna TextoBuscar
+          // this.dataListado.Columns["TextoBuscar"].Visible = false; //columna TextoBuscar
         }
 
 
@@ -227,7 +229,8 @@ namespace Presentacion
         {
             if (cbBuscar.SelectedIndex == 1)
             {
-                this.Mostrar();
+                //this.Mostrar(); old
+                this.BuscarNombre();
             }
             else if (cbBuscar.SelectedIndex == 0)
             {
@@ -429,6 +432,29 @@ namespace Presentacion
         }
 
 
+        private int CalcularEdad()
+        {
+            DateTime FechaActual = DateTime.Now.Date;
+            //MessageBox.Show("La fecha de hoy es: " + Convert.ToString(FechaActual) + ""); //linea para testear la fecha actual
+            DateTime Nacimiento = DateTime.Parse(dtNacimiento.Text);
+            int Edad;
+            Edad = FechaActual.Year - Nacimiento.Year;
+
+            if (FechaActual.Month < Nacimiento.Month)
+            {
+                Edad--;
+            }
+            else if ((FechaActual.Month == Nacimiento.Month)
+                       && (FechaActual.Day < Nacimiento.Day))
+            {
+                Edad--;
+            }
+
+            return Edad ;
+
+        }
+
+
         private void Anulados()
         {
             string estadotabla;
@@ -490,18 +516,30 @@ namespace Presentacion
             this.OcultarColumnas();
 
 
+
+            this.toolTip1.SetToolTip(this.btnAnular, "Anular");
+            this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
+            this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
+            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: "+ CalcularEdad());
+
+
+
+
             //todo esto es pa ponerle colorcitos al datagridview
 
             dataListado.BorderStyle = BorderStyle.None;
-            dataListado.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(189, 238, 240); //clarito
+            dataListado.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(211, 241, 242); //clarito
             dataListado.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataListado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(91, 207, 204);  //resalto
+            dataListado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(87, 189, 186);  //resalto
             dataListado.DefaultCellStyle.SelectionForeColor = Color.White;
             dataListado.BackgroundColor = Color.White;
 
             dataListado.EnableHeadersVisualStyles = false;
             dataListado.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 148, 145);  //oscuro
+            dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 133, 135);  //oscuro
             dataListado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
 
             dataListado.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Regular);
@@ -592,5 +630,122 @@ namespace Presentacion
         {
             EliminarItems();
         }
+
+        private void dtNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
+        }
+
+
+
+
+
+        //validaciones
+        
+        private void txtCiPaciente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider1.SetError(txtCiPaciente, "");
+            if (valid.soloNumeros(e))
+            {
+                errorProvider1.SetError(txtCiPaciente, "En este campo solo se pueden ingresar números");
+            }
+        }
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider1.SetError(txtNombre, "");
+            if (valid.soloLetras(e))
+            {
+                errorProvider1.SetError(txtNombre, "En este campo solo se pueden ingresar letras");
+            }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider1.SetError(txtTelefono, "");
+            if (valid.soloNumeros(e))
+            {
+                errorProvider1.SetError(txtTelefono, "En este campo solo se pueden ingresar números");
+            }
+        }
+        private void txtIdMedico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.soloNumeros(e);
+        }
+        private void txtNroHab_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valid.soloNumeros(e);
+        }
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (cbBuscar.Text == "Cedula")
+            {
+                errorProvider1.SetError(txtBuscar, "");
+                if (valid.soloNumeros(e))
+                {
+                    errorProvider1.SetError(txtBuscar, "En este campo solo se pueden ingresar números");
+                }
+            }
+            if (cbBuscar.Text == "Nombre")
+            {
+                errorProvider1.SetError(txtBuscar, "");
+                if (valid.soloLetras(e))
+                {
+                    errorProvider1.SetError(txtBuscar, "En este campo solo se pueden ingresar letras");
+                }
+            }
+        }
+
+        private void txtCiPaciente_Leave(object sender, EventArgs e)
+        {
+            CedulaUnica();
+        }
+
+        private void CedulaUnica()
+        {
+            try
+            {
+                if (!IsNuevo)
+                    return;
+
+                //el siguiente condicional es para ver si hay texto escrito en los campos de cedula antes de verificar
+                if ( (this.cbCedula.SelectedIndex != -1) || (this.txtCiPaciente.Text != string.Empty))
+                {
+
+                    //este condicional es para verificar que la cedula que se quiere ingresar sea unica. 
+                    //Si la datatable tiene almenos un registro significa que ya existe esa cedula en la base de datos
+                    if ((MPacientes.BuscarCedula((this.cbCedula.Text + this.txtCiPaciente.Text))).Rows.Count != 0)
+                    {
+                        MessageBox.Show("Ya el paciente C.I: " + (this.cbCedula.Text + this.txtCiPaciente.Text) + " está ingresado", "Crystal Clear", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.txtCiPaciente.Text = string.Empty;
+                        this.cbCedula.SelectedIndex = -1;
+                        this.txtCiPaciente.Focus();
+                    }
+
+                    Mostrar();
+
+
+                }
+
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error en la conexion de la BD", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbCedula_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbCedula.SelectedIndex != -1)
+            {
+                if (IsNuevo == true || IsEditar == true)
+                {
+                    txtCiPaciente.Enabled = true;
+                    txtCiPaciente.Focus();
+                }
+            }
+        }
+
+        
     }
 }
