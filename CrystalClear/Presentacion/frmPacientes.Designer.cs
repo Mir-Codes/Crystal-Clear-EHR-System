@@ -45,6 +45,8 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.PanelIngreso = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.txtCiPaciente = new System.Windows.Forms.TextBox();
             this.txtTalla = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -296,6 +298,8 @@
             // PanelIngreso
             // 
             this.PanelIngreso.BackColor = System.Drawing.Color.White;
+            this.PanelIngreso.Controls.Add(this.label15);
+            this.PanelIngreso.Controls.Add(this.label14);
             this.PanelIngreso.Controls.Add(this.txtCiPaciente);
             this.PanelIngreso.Controls.Add(this.txtTalla);
             this.PanelIngreso.Controls.Add(this.label12);
@@ -330,6 +334,32 @@
             this.PanelIngreso.Size = new System.Drawing.Size(436, 753);
             this.PanelIngreso.TabIndex = 0;
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.SystemColors.Control;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label15.Location = new System.Drawing.Point(350, 690);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 32);
+            this.label15.TabIndex = 115;
+            this.label15.Text = "Mt";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.SystemColors.Control;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label14.Location = new System.Drawing.Point(167, 690);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(41, 32);
+            this.label14.TabIndex = 114;
+            this.label14.Text = "Kg";
+            // 
             // txtCiPaciente
             // 
             this.txtCiPaciente.BackColor = System.Drawing.SystemColors.Control;
@@ -342,6 +372,7 @@
             this.txtCiPaciente.Name = "txtCiPaciente";
             this.txtCiPaciente.Size = new System.Drawing.Size(278, 39);
             this.txtCiPaciente.TabIndex = 113;
+            this.txtCiPaciente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCiPaciente_KeyPress);
             this.txtCiPaciente.Leave += new System.EventHandler(this.txtCiPaciente_Leave);
             // 
             // txtTalla
@@ -356,6 +387,7 @@
             this.txtTalla.Name = "txtTalla";
             this.txtTalla.Size = new System.Drawing.Size(178, 39);
             this.txtTalla.TabIndex = 111;
+            this.txtTalla.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTalla_KeyPress);
             // 
             // label12
             // 
@@ -381,6 +413,7 @@
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(178, 39);
             this.txtPeso.TabIndex = 109;
+            this.txtPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeso_KeyPress);
             // 
             // label13
             // 
@@ -406,6 +439,7 @@
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(178, 39);
             this.txtCorreo.TabIndex = 107;
+            this.txtCorreo.Leave += new System.EventHandler(this.txtCorreo_Leave);
             // 
             // label11
             // 
@@ -456,6 +490,7 @@
             this.txtOcupacion.Name = "txtOcupacion";
             this.txtOcupacion.Size = new System.Drawing.Size(365, 39);
             this.txtOcupacion.TabIndex = 101;
+            this.txtOcupacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOcupacion_KeyPress);
             // 
             // label9
             // 
@@ -510,6 +545,7 @@
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(178, 39);
             this.txtTelefono.TabIndex = 97;
+            this.txtTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefono_KeyPress);
             // 
             // label6
             // 
@@ -551,6 +587,8 @@
             this.cbCedula.Name = "cbCedula";
             this.cbCedula.Size = new System.Drawing.Size(84, 39);
             this.cbCedula.TabIndex = 95;
+            this.cbCedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
+            this.cbCedula.Leave += new System.EventHandler(this.cbCedula_Leave);
             // 
             // label2
             // 
@@ -639,6 +677,7 @@
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(371, 39);
             this.txtNombre.TabIndex = 2;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // label4
             // 
@@ -760,5 +799,7 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.TextBox txtCiPaciente;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
     }
 }

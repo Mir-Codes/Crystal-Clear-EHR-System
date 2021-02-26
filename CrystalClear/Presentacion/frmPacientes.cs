@@ -83,11 +83,14 @@ namespace Presentacion
                 error = false;
                 errorProvider1.SetError(txtOcupacion, "ingresa la ocupacion del paciente");
             }
-            if (txtOcupacion.Text == "")
+
+
+            if ( !(valid.IsValidEmail(txtCorreo.Text)) )
             {
                 error = false;
-                errorProvider1.SetError(txtOcupacion, "ingresa la ocupacion del paciente");
+                errorProvider1.SetError(txtCorreo, "Escriba un correo válido");
             }
+
             return error;
         }
 
@@ -642,6 +645,7 @@ namespace Presentacion
 
         //validaciones
         
+
         private void txtCiPaciente_KeyPress(object sender, KeyPressEventArgs e)
         {
             errorProvider1.SetError(txtCiPaciente, "");
@@ -667,14 +671,44 @@ namespace Presentacion
                 errorProvider1.SetError(txtTelefono, "En este campo solo se pueden ingresar números");
             }
         }
-        private void txtIdMedico_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void txtCorreo_Leave(object sender, EventArgs e)
         {
-            valid.soloNumeros(e);
+            errorProvider1.SetError(txtCorreo, "");
+            if ( !(valid.IsValidEmail(txtCorreo.Text)) )
+            {
+                errorProvider1.SetError(txtCorreo, "Escriba un correo válido");
+            }
         }
-        private void txtNroHab_KeyPress(object sender, KeyPressEventArgs e)
+
+        private void txtOcupacion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            valid.soloNumeros(e);
+            errorProvider1.SetError(txtOcupacion, "");
+            if (valid.soloLetras(e))
+            {
+                errorProvider1.SetError(txtOcupacion, "En este campo solo se pueden ingresar letras");
+            }
         }
+
+        private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider1.SetError(txtPeso, "");
+            if (valid.soloNumerosyComas(e))
+            {
+                errorProvider1.SetError(txtPeso, "En este campo solo se pueden ingresar números y comas");
+            }
+        }
+
+        private void txtTalla_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider1.SetError(txtTalla, "");
+            if (valid.soloNumerosyComas(e))
+            {
+                errorProvider1.SetError(txtTalla, "En este campo solo se pueden ingresar números y comas");
+            }
+        }
+
+
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (cbBuscar.Text == "Cedula")
@@ -700,6 +734,11 @@ namespace Presentacion
             CedulaUnica();
         }
 
+        private void cbCedula_Leave(object sender, EventArgs e)
+        {
+            CedulaUnica();
+        }
+
         private void CedulaUnica()
         {
             try
@@ -708,7 +747,7 @@ namespace Presentacion
                     return;
 
                 //el siguiente condicional es para ver si hay texto escrito en los campos de cedula antes de verificar
-                if ( (this.cbCedula.SelectedIndex != -1) || (this.txtCiPaciente.Text != string.Empty))
+                if ( (this.cbCedula.SelectedIndex != -1) && (this.txtCiPaciente.Text != string.Empty))
                 {
 
                     //este condicional es para verificar que la cedula que se quiere ingresar sea unica. 
@@ -731,18 +770,6 @@ namespace Presentacion
             catch (Exception)
             {
                 MessageBox.Show("Error en la conexion de la BD", "Laboratorio Clínico Virgen de Coromoto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cbCedula_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbCedula.SelectedIndex != -1)
-            {
-                if (IsNuevo == true || IsEditar == true)
-                {
-                    txtCiPaciente.Enabled = true;
-                    txtCiPaciente.Focus();
-                }
             }
         }
 

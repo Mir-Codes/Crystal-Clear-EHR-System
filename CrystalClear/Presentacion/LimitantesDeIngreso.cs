@@ -87,12 +87,16 @@ namespace Presentacion
             return Correct;
         }
 
-        public bool soloNumerosyPuntos(KeyPressEventArgs e)
+        public bool soloNumerosyComas(KeyPressEventArgs e)
         {
             bool Correct = false;
             try
             {
-                if (Char.IsNumber(e.KeyChar))
+                if (char.IsNumber(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else if (e.KeyChar.ToString() == ",")
                 {
                     e.Handled = false;
                 }
