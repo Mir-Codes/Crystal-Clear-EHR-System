@@ -572,6 +572,7 @@
             this.dtNacimiento.Size = new System.Drawing.Size(169, 39);
             this.dtNacimiento.TabIndex = 96;
             this.dtNacimiento.ValueChanged += new System.EventHandler(this.dtNacimiento_ValueChanged);
+            this.dtNacimiento.MouseLeave += new System.EventHandler(this.dtNacimiento_MouseLeave);
             // 
             // cbCedula
             // 

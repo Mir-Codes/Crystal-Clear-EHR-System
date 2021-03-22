@@ -636,6 +636,7 @@ namespace Presentacion
 
         private void dtNacimiento_ValueChanged(object sender, EventArgs e)
         {
+            
             this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
         }
 
@@ -669,6 +670,16 @@ namespace Presentacion
             if (valid.soloNumeros(e))
             {
                 errorProvider1.SetError(txtTelefono, "En este campo solo se pueden ingresar números");
+            }
+        }
+
+
+        private void dtNacimiento_MouseLeave(object sender, EventArgs e)
+        {
+
+            if (CalcularEdad() < 0 || CalcularEdad() > 120)
+            {
+                errorProvider1.SetError(dtNacimiento, "Fecha de Nacimiento no válida");
             }
         }
 
@@ -773,6 +784,5 @@ namespace Presentacion
             }
         }
 
-        
     }
 }
