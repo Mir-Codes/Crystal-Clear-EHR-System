@@ -14,7 +14,7 @@ namespace Metodos
 
         //Metodo Insertar que llama al metodo Insertar de la clase DPaciente de la capa Datos
 
-        public static string Insertar(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugnac, string direccion, string ocupacion, string telefono, string correo, string estadovm, string imgpath, string peso, string talla)
+        public static string Insertar(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugnac, string direccion, string ocupacion, string telefono, string correo, string estadovm, string imgpath, string peso, string talla, int estado)
         {
             DPacientes Obj = new DPacientes();
             Obj.Cedula = cedula;
@@ -31,6 +31,7 @@ namespace Metodos
             Obj.Imagepath = imgpath;
             Obj.Peso = peso;
             Obj.Talla = talla;
+            Obj.Estado = estado;
 
             return Obj.Insertar(Obj);
         }
@@ -68,19 +69,13 @@ namespace Metodos
             return Obj.Eliminar(Obj);
         }
 
-        ////Metodo Mostrar que llama al metodo Mostrar de la clase DPaciente de la capa Datos
-        //public static DataTable Mostrar()
+     
+
+        //public new static List<DPacientes> Mostrar(string TextoBuscar)
         //{
-        //    return new DPacientes().Mostrar();
+        //    DPacientes Objeto = new DPacientes();
+        //    return Objeto.Mostrar(TextoBuscar);
         //}
-
-
-        //probar esta nueva version, NUEVA VERSION
-        public new static List<DPacientes> Mostrar(string TextoBuscar)
-        {
-            DPacientes Objeto = new DPacientes();
-            return Objeto.Mostrar(TextoBuscar);
-        }
 
         //Metodo BuscarNombre que llama al metodo BuscarNombre de la clase DPaciente de la capa Datos
 

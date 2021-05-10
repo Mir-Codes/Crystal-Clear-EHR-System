@@ -26,6 +26,7 @@ namespace Datos
         private string _Imagepath;
         private string _Peso;
         private string _Talla;
+        private int _Estado;
 
         private string _TextoBuscar;
 
@@ -48,7 +49,8 @@ namespace Datos
         public string Peso { get => _Peso; set => _Peso = value; }
         public string Talla { get => _Talla; set => _Talla = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
-  
+        public int Estado { get => _Estado; set => _Estado = value; }
+
 
 
 
@@ -59,7 +61,7 @@ namespace Datos
         }
 
         //constructor con parametros
-        public DPacientes(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugarnac, string direccion, string ocupacion, string telefono, string estadovivomuerto, string imagepath, string peso, string talla, string textobuscar )
+        public DPacientes(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugarnac, string direccion, string ocupacion, string telefono, string estadovivomuerto, string imagepath, string peso, string talla, string textobuscar, int estado )
         {
             //this se refiere a esta clase
             //this.Cedula es del metodo getter y setter
@@ -78,6 +80,8 @@ namespace Datos
             this.Peso = peso;
             this.Talla = talla;
             this.TextoBuscar = textobuscar;
+            this.Estado = estado;
+
 
 
         }
@@ -196,6 +200,13 @@ namespace Datos
                 ParTalla.Size = 5;
                 ParTalla.Value = pacientes.Talla;
                 SqlCmd.Parameters.Add(ParTalla);
+
+                SqlParameter ParEstado = new SqlParameter();
+                ParEstado.ParameterName = "@estado";
+                ParEstado.SqlDbType = SqlDbType.TinyInt;
+                ParEstado.Size = 1;
+                ParEstado.Value = pacientes.Estado;
+                SqlCmd.Parameters.Add(ParEstado);
 
                 //Ejecutamos nuestro comando
                 rpta = SqlCmd.ExecuteNonQuery() == 1 ? "Ok" : "No se ingreso el registro";
@@ -395,61 +406,62 @@ namespace Datos
 
         }//fin funcion eliminar
 
-        //Metodo Mostrar
+        ////Metodo Mostrar
 
-        public List<DPacientes> Mostrar(string TextoBuscar)
-        {
-            DataTable DtResultado = new DataTable("Pacientes");
-            SqlConnection SqlConectar = new SqlConnection();
-            List<DPacientes> ListaGenerica = new List<DPacientes>();
+        //public List<DPacientes> Mostrar(string TextoBuscar)
+        //{
+        //    DataTable DtResultado = new DataTable("Pacientes");
+        //    SqlConnection SqlConectar = new SqlConnection();
+        //    List<DPacientes> ListaGenerica = new List<DPacientes>();
 
-            try
-            {
-                SqlConectar.ConnectionString = Conexion.CadenaConexion;
-                SqlDataReader LeerFilas;
-                SqlCommand SqlComando = new SqlCommand();
-                SqlComando.Connection = SqlConectar;
-                SqlComando.CommandText = "spmostrar_pacientes";
-                SqlComando.CommandType = CommandType.StoredProcedure;
-                //esto es cuando tiene alguna condicion
-                SqlComando.Parameters.AddWithValue("@TextoBuscar", TextoBuscar);
+        //    try
+        //    {
+        //        SqlConectar.ConnectionString = Conexion.CadenaConexion;
+        //        SqlDataReader LeerFilas;
+        //        SqlCommand SqlComando = new SqlCommand();
+        //        SqlComando.Connection = SqlConectar;
+        //        SqlComando.CommandText = "spmostrar_pacientes_cedula";
+        //        SqlComando.CommandType = CommandType.StoredProcedure;
+        //        //esto es cuando tiene alguna condicion
+        //        SqlComando.Parameters.AddWithValue("@TextoBuscar", TextoBuscar);
 
-                SqlConectar.Open();
+        //        SqlConectar.Open();
 
-                LeerFilas = SqlComando.ExecuteReader();
+        //        LeerFilas = SqlComando.ExecuteReader();
 
-                while (LeerFilas.Read())
-                {
-                    ListaGenerica.Add(new DPacientes
-                    {
-                        Cedula = LeerFilas.GetString(0),
-                        Nombre = LeerFilas.GetString(1),
-                        Fechanac = LeerFilas.GetDateTime(2),
-                        Sexo = LeerFilas.GetString(3),
-                        Estcivil = LeerFilas.GetString(4),
-                        Lugarnac = LeerFilas.GetString(5),
-                        Direccion = LeerFilas.GetString(6),
-                        Ocupacion = LeerFilas.GetString(7),
-                        Telefono = LeerFilas.GetString(8),
-                        Correo = LeerFilas.GetString(9),
-                        Estadovivomuerto = LeerFilas.GetString(10),
-                        Imagepath = LeerFilas.GetString(11),
-                        Peso = LeerFilas.GetString(12),
-                        Talla = LeerFilas.GetString(13)
-                    });
-                }
-                LeerFilas.Close();
-                SqlConectar.Close();
-            }
-            catch (Exception ex)
-            {
-                ListaGenerica = null;
+        //        while (LeerFilas.Read())
+        //        {
+        //            ListaGenerica.Add(new DPacientes
+        //            {
+        //                Cedula = LeerFilas.GetString(0),
+        //                Nombre = LeerFilas.GetString(1),
+        //                Fechanac = LeerFilas.GetDateTime(2),
+        //                Sexo = LeerFilas.GetString(3),
+        //                Estcivil = LeerFilas.GetString(4),
+        //                Lugarnac = LeerFilas.GetString(5),
+        //                Direccion = LeerFilas.GetString(6),
+        //                Ocupacion = LeerFilas.GetString(7),
+        //                Telefono = LeerFilas.GetString(8),
+        //                Correo = LeerFilas.GetString(9),
+        //                Estadovivomuerto = LeerFilas.GetString(10),
+        //                Imagepath = LeerFilas.GetString(11),
+        //                Peso = LeerFilas.GetString(12),
+        //                Talla = LeerFilas.GetString(13),
+        //                Estado = LeerFilas.GetInt32(14)
+        //            });
+        //        }
+        //        LeerFilas.Close();
+        //        SqlConectar.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ListaGenerica = null;
                 
-            }
+        //    }
 
-            return ListaGenerica;
+        //    return ListaGenerica;
 
-        }
+        //}//fin del metodo mostrar
 
         //Metodo BuscarNombre
 

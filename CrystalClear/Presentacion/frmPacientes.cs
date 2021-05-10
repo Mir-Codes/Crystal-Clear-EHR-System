@@ -194,6 +194,7 @@ namespace Presentacion
         //Metodo para ocultar columnas
         private void OcultarColumnas()
         {
+          //aqui se ponen las columnas que se deben ocultar. 
           // this.dataListado.Columns["TextoBuscar"].Visible = false; //columna TextoBuscar
         }
 
@@ -201,7 +202,7 @@ namespace Presentacion
         //Metodo Mostrar
         private void Mostrar()
         {
-            this.dataListado.DataSource = MPacientes.Mostrar(txtBuscar.Text);
+            this.dataListado.DataSource = MPacientes.BuscarNombre("");
             this.OcultarColumnas();
             dataListado.ClearSelection();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
@@ -264,10 +265,12 @@ namespace Presentacion
                         this.txtOcupacion.Text,
                         this.txtTelefono.Text,
                         this.txtCorreo.Text,
-                        "V",
+                        "1",
                         "ejemplo imagepath",
                         this.txtPeso.Text,
-                        this.txtTalla.Text
+                        this.txtTalla.Text,
+                        1 // 1 significa Estado = activo  y 0 significa Estado = anulado
+
                         );
 
 
@@ -286,7 +289,7 @@ namespace Presentacion
                         this.txtOcupacion.Text,
                         this.txtTelefono.Text,
                         this.txtCorreo.Text,
-                        "V",
+                        "1",
                         "ejemplo imagepath",
                         this.txtPeso.Text,
                         this.txtTalla.Text
@@ -361,10 +364,12 @@ namespace Presentacion
                         if (NumeroSeleccionado > 1)
                         {
                             this.MensajeOk("Se eliminaron correctamente los registros de pacientes");
+                            Limpiar();
                         }
                         else
                         {
                             this.MensajeOk("Se eliminó correctamente el registro del paciente");
+                            Limpiar();
                         }
                     }
                     else
@@ -460,43 +465,45 @@ namespace Presentacion
 
         private void Anulados()
         {
-            string estadotabla;
+            string estadoVivoMuerto;
+            string estado;
 
             for (int fila = 0; fila <= dataListado.Rows.Count - 1; fila++)
             {
-                estadotabla = Convert.ToString(this.dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Value);
+                estadoVivoMuerto = Convert.ToString(this.dataListado.Rows[fila].Cells["vivo_muerto"].Value);
+                estado = Convert.ToString(this.dataListado.Rows[fila].Cells["estado"].Value);
 
-                if (estadotabla == "M")
+                if ((estadoVivoMuerto == "0") || (estado == "0"))
                 {
                     dataListado.Rows[fila].Cells["Cedula"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Nombre"].Style.ForeColor = Color.Red;
-                    dataListado.Rows[fila].Cells["FechaNac"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["fecha_nacimiento"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Sexo"].Style.ForeColor = Color.Red;
-                    dataListado.Rows[fila].Cells["EstCivil"].Style.ForeColor = Color.Red;
-                    dataListado.Rows[fila].Cells["LugarNac"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["estado_civil"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["lugar_nacimiento"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Direccion"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Ocupacion"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Telefono"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Correo"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Peso"].Style.ForeColor = Color.Red;
                     dataListado.Rows[fila].Cells["Talla"].Style.ForeColor = Color.Red;
-                    dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Style.ForeColor = Color.Red;
-                    dataListado.Rows[fila].Cells["imagepath"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["vivo_muerto"].Style.ForeColor = Color.Red;
+                    dataListado.Rows[fila].Cells["image_path"].Style.ForeColor = Color.Red;
 
                     dataListado.Rows[fila].Cells["Cedula"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Nombre"].Style.SelectionBackColor = Color.Brown;
-                    dataListado.Rows[fila].Cells["FechaNac"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["fecha_nacimiento"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Sexo"].Style.SelectionBackColor = Color.Brown;
-                    dataListado.Rows[fila].Cells["EstCivil"].Style.SelectionBackColor = Color.Brown;
-                    dataListado.Rows[fila].Cells["LugarNac"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["estado_civil"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["lugar_nacimiento"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Direccion"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Ocupacion"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Telefono"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Correo"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Peso"].Style.SelectionBackColor = Color.Brown;
                     dataListado.Rows[fila].Cells["Talla"].Style.SelectionBackColor = Color.Brown;
-                    dataListado.Rows[fila].Cells["EstadoVivoMuerto"].Style.SelectionBackColor = Color.Brown;
-                    dataListado.Rows[fila].Cells["imagepath"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["vivo_muerto"].Style.SelectionBackColor = Color.Brown;
+                    dataListado.Rows[fila].Cells["image_path"].Style.SelectionBackColor = Color.Brown;
 
                 }
             }
@@ -597,10 +604,10 @@ namespace Presentacion
             //
 
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
-            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["FechaNac"].Value);
+            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
             this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
-            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["EstCivil"].Value);
-            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["LugarNac"].Value);
+            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["estado_civil"].Value);
+            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["lugar_nacimiento"].Value);
             this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
             this.txtOcupacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ocupacion"].Value);
             this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
