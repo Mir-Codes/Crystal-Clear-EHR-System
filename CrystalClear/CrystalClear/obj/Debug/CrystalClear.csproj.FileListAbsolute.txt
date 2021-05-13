@@ -15,3 +15,4 @@ C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\Cry
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\Metodos.pdb
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\Datos.pdb
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\Presentacion.dll.config
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\CrystalClear\bin\Debug\es-419\Presentacion.resources.dll
