@@ -1,8 +1,8 @@
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\obj\Debug\Metodos.csprojAssemblyReference.cache
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\bin\Debug\Metodos.dll
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\bin\Debug\Metodos.pdb
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\bin\Debug\Datos.dll
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\bin\Debug\Datos.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\obj\Debug\Metodos.csprojAssemblyReference.cache
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\obj\Debug\Metodos.csproj.CopyComplete
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\obj\Debug\Metodos.dll
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Metodos\obj\Debug\Metodos.pdb
