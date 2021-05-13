@@ -43,7 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aaaaaaaaaaaa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aaaaaaaaaaaa.Designer.cs">
+      <DependentUpon>aaaaaaaaaaaa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="frmHistorias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHistorias.Designer.cs">
+      <DependentUpon>frmHistorias.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPacientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -51,11 +63,17 @@
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </Compile>
     <Compile Include="LimitantesDeIngreso.cs" />
-    <Compile Include="MenuInicioMDI.cs">
+    <Compile Include="frmMenuInicioMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuInicioMDI.Designer.cs">
-      <DependentUpon>MenuInicioMDI.cs</DependentUpon>
+    <Compile Include="frmMenuInicioMDI.Designer.cs">
+      <DependentUpon>frmMenuInicioMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -80,14 +98,23 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="aaaaaaaaaaaa.resx">
+      <DependentUpon>aaaaaaaaaaaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHistorias.resx">
+      <DependentUpon>frmHistorias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPacientes.resx">
       <DependentUpon>frmPacientes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuInicioMDI.es-419.resx">
-      <DependentUpon>MenuInicioMDI.cs</DependentUpon>
+    <EmbeddedResource Include="frmMenuInicioMDI.es-419.resx">
+      <DependentUpon>frmMenuInicioMDI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuInicioMDI.resx">
-      <DependentUpon>MenuInicioMDI.cs</DependentUpon>
+    <EmbeddedResource Include="frmMenuInicioMDI.resx">
+      <DependentUpon>frmMenuInicioMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

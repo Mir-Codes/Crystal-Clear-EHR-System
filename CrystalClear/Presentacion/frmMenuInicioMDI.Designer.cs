@@ -1,6 +1,6 @@
 ﻿namespace Presentacion
 {
-    partial class MenuInicioMDI
+    partial class frmMenuInicioMDI
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -29,9 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuInicioMDI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMenuInicioMDI));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.historiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.citasMédicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,14 +42,11 @@
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.pacientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.citasMédicasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -65,12 +65,12 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.historiasToolStripMenuItem,
-            this.windowsMenu,
             this.pacientesToolStripMenuItem,
             this.citasMédicasToolStripMenuItem,
-            this.configuraciónToolStripMenuItem,
             this.reportesToolStripMenuItem,
-            this.toolsMenu,
+            this.windowsMenu,
+            this.sistemaToolStripMenuItem,
+            this.configuraciónToolStripMenuItem,
             this.helpMenu});
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -79,7 +79,27 @@
             // historiasToolStripMenuItem
             // 
             resources.ApplyResources(this.historiasToolStripMenuItem, "historiasToolStripMenuItem");
+            this.historiasToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
             this.historiasToolStripMenuItem.Name = "historiasToolStripMenuItem";
+            this.historiasToolStripMenuItem.Click += new System.EventHandler(this.historiasToolStripMenuItem_Click);
+            // 
+            // pacientesToolStripMenuItem
+            // 
+            resources.ApplyResources(this.pacientesToolStripMenuItem, "pacientesToolStripMenuItem");
+            this.pacientesToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
+            this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
+            // 
+            // citasMédicasToolStripMenuItem
+            // 
+            resources.ApplyResources(this.citasMédicasToolStripMenuItem, "citasMédicasToolStripMenuItem");
+            this.citasMédicasToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
+            this.citasMédicasToolStripMenuItem.Name = "citasMédicasToolStripMenuItem";
+            // 
+            // reportesToolStripMenuItem
+            // 
+            resources.ApplyResources(this.reportesToolStripMenuItem, "reportesToolStripMenuItem");
+            this.reportesToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
+            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             // 
             // windowsMenu
             // 
@@ -91,6 +111,7 @@
             this.tileHorizontalToolStripMenuItem,
             this.closeAllToolStripMenuItem,
             this.arrangeIconsToolStripMenuItem});
+            this.windowsMenu.ForeColor = System.Drawing.Color.DarkCyan;
             this.windowsMenu.Name = "windowsMenu";
             // 
             // newWindowToolStripMenuItem
@@ -129,53 +150,41 @@
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
             // 
-            // pacientesToolStripMenuItem
+            // sistemaToolStripMenuItem
             // 
-            resources.ApplyResources(this.pacientesToolStripMenuItem, "pacientesToolStripMenuItem");
-            this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
+            resources.ApplyResources(this.sistemaToolStripMenuItem, "sistemaToolStripMenuItem");
+            this.sistemaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cerrarSesiónToolStripMenuItem,
+            this.salirToolStripMenuItem});
+            this.sistemaToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
+            this.sistemaToolStripMenuItem.Name = "sistemaToolStripMenuItem";
             // 
-            // citasMédicasToolStripMenuItem
+            // cerrarSesiónToolStripMenuItem
             // 
-            resources.ApplyResources(this.citasMédicasToolStripMenuItem, "citasMédicasToolStripMenuItem");
-            this.citasMédicasToolStripMenuItem.Name = "citasMédicasToolStripMenuItem";
+            resources.ApplyResources(this.cerrarSesiónToolStripMenuItem, "cerrarSesiónToolStripMenuItem");
+            this.cerrarSesiónToolStripMenuItem.Name = "cerrarSesiónToolStripMenuItem";
+            // 
+            // salirToolStripMenuItem
+            // 
+            resources.ApplyResources(this.salirToolStripMenuItem, "salirToolStripMenuItem");
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             // 
             // configuraciónToolStripMenuItem
             // 
             resources.ApplyResources(this.configuraciónToolStripMenuItem, "configuraciónToolStripMenuItem");
+            this.configuraciónToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            // 
-            // reportesToolStripMenuItem
-            // 
-            resources.ApplyResources(this.reportesToolStripMenuItem, "reportesToolStripMenuItem");
-            this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
-            // 
-            // toolsMenu
-            // 
-            resources.ApplyResources(this.toolsMenu, "toolsMenu");
-            this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
-            this.toolsMenu.Name = "toolsMenu";
-            // 
-            // optionsToolStripMenuItem
-            // 
-            resources.ApplyResources(this.optionsToolStripMenuItem, "optionsToolStripMenuItem");
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
             // 
             // helpMenu
             // 
             resources.ApplyResources(this.helpMenu, "helpMenu");
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.contentsToolStripMenuItem,
             this.indexToolStripMenuItem,
             this.searchToolStripMenuItem,
             this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
+            this.helpMenu.ForeColor = System.Drawing.Color.DarkCyan;
             this.helpMenu.Name = "helpMenu";
-            // 
-            // contentsToolStripMenuItem
-            // 
-            resources.ApplyResources(this.contentsToolStripMenuItem, "contentsToolStripMenuItem");
-            this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             // 
             // indexToolStripMenuItem
             // 
@@ -217,7 +226,7 @@
             resources.ApplyResources(this.toolStripProgressBar1, "toolStripProgressBar1");
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             // 
-            // MenuInicioMDI
+            // frmMenuInicioMDI
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -226,8 +235,9 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Name = "MenuInicioMDI";
+            this.Name = "frmMenuInicioMDI";
             this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -245,8 +255,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tileHorizontalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolsMenu;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsMenu;
         private System.Windows.Forms.ToolStripMenuItem newWindowToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cascadeToolStripMenuItem;
@@ -254,7 +262,6 @@
         private System.Windows.Forms.ToolStripMenuItem closeAllToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpMenu;
-        private System.Windows.Forms.ToolStripMenuItem contentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem indexToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem searchToolStripMenuItem;
         private System.Windows.Forms.ToolTip toolTip;
@@ -264,6 +271,9 @@
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
     }
 }
 

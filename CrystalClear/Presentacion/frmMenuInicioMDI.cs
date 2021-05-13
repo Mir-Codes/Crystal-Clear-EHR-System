@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Presentacion
 {
-    public partial class MenuInicioMDI : Form
+    public partial class frmMenuInicioMDI : Form
     {
         private int childFormNumber = 0;
 
-        public MenuInicioMDI()
+        public frmMenuInicioMDI()
         {
             InitializeComponent();
         }
@@ -95,6 +95,13 @@ namespace Presentacion
             {
                 childForm.Close();
             }
+        }
+
+        private void historiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmHistorias frm = new frmHistorias(); 
+            frm.MdiParent = this;
+            frm.Show();
         }
     }
 }

@@ -12,20 +12,59 @@ using Metodos;
 
 namespace Presentacion
 {
-    public partial class frmPacientes : Form
+    public partial class frmHistorias : Form
     {
+        public frmHistorias()
+        {
+            InitializeComponent();
+        }
+
+        private void frmHistorias_Load(object sender, EventArgs e)
+        {
+            this.Mostrar();
+            this.Deshabilitar();
+            this.Botones();
+            cbBuscar.SelectedIndex = 1;
+
+            this.OcultarColumnas();
+
+
+
+            this.toolTip1.SetToolTip(this.btnAnular, "Anular");
+            this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
+            this.toolTip1.SetToolTip(this.btnContraer, "Cancelar");
+            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
+            this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
+            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
+
+
+
+
+            //todo esto es pa ponerle colorcitos al datagridview
+
+            dataListado.BorderStyle = BorderStyle.None;
+            dataListado.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(211, 241, 242); //clarito
+            dataListado.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataListado.DefaultCellStyle.SelectionBackColor = Color.FromArgb(87, 189, 186);  //resalto
+            dataListado.DefaultCellStyle.SelectionForeColor = Color.White;
+            dataListado.BackgroundColor = Color.White;
+
+            dataListado.EnableHeadersVisualStyles = false;
+            dataListado.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataListado.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(0, 133, 135);  //oscuro
+            dataListado.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            dataListado.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Regular);
+
+        }
+
+
         private bool IsNuevo = false;
 
         private bool IsEditar = false;
 
         LimitantesDeIngreso valid = new LimitantesDeIngreso();
-
-        public frmPacientes()
-        {
-            InitializeComponent();
-            
-
-        }
 
 
         private bool validar()
@@ -85,7 +124,7 @@ namespace Presentacion
             }
 
 
-            if ( !(valid.IsValidEmail(txtCorreo.Text)) )
+            if (!(valid.IsValidEmail(txtCorreo.Text)))
             {
                 error = false;
                 errorProvider1.SetError(txtCorreo, "Escriba un correo válido");
@@ -103,7 +142,7 @@ namespace Presentacion
         //Mostrar mensaje de confirmacion
         private void MensajeOk(string mensaje)
         {
-            MessageBox.Show(mensaje, "Sistema de Historias Clinicas - Pacientes", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show(mensaje, "Sistema de Historias Clinicas - Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Mostrar mensaje de error
@@ -133,7 +172,7 @@ namespace Presentacion
         //Habilitar los controles del formulario
         private void Habilitar()
         {
-            
+
             this.cbCedula.Enabled = true;
             this.txtCiPaciente.Enabled = true;
             this.txtNombre.Enabled = true;
@@ -144,9 +183,9 @@ namespace Presentacion
             this.txtOcupacion.Enabled = true;
 
 
-
             btnNuevo.Visible = false;
-            PanelIngreso.Size = new Size(311, PanelIngreso.Size.Height);
+            
+            PanelIngreso.Size = new Size(groupBox1.Size.Width, PanelIngreso.Size.Height);
         }
 
         //Deshabilitar los controles del formulario
@@ -164,12 +203,12 @@ namespace Presentacion
         //Habilitar los botones 
         private void Botones()
         {
-            if(this.IsNuevo)
+            if (this.IsNuevo)
             {
                 this.Habilitar();
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
-                this.btnCancelar.Enabled = true;
+                this.btnContraer.Enabled = true;
 
             }
             else if (this.IsEditar)
@@ -179,14 +218,14 @@ namespace Presentacion
                 this.txtCiPaciente.Enabled = false;
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
-                this.btnCancelar.Enabled = true;
+                this.btnContraer.Enabled = true;
             }
             else
             {
                 this.Deshabilitar();
                 this.btnNuevo.Enabled = true;
                 this.btnGuardar.Enabled = false;
-                this.btnCancelar.Enabled = false;
+                this.btnContraer.Enabled = false;
             }
         }//fin metodo botones
 
@@ -194,8 +233,8 @@ namespace Presentacion
         //Metodo para ocultar columnas
         private void OcultarColumnas()
         {
-          //aqui se ponen las columnas que se deben ocultar. 
-          // this.dataListado.Columns["TextoBuscar"].Visible = false; //columna TextoBuscar
+            //aqui se ponen las columnas que se deben ocultar. 
+            // this.dataListado.Columns["TextoBuscar"].Visible = false; //columna TextoBuscar
         }
 
 
@@ -226,7 +265,7 @@ namespace Presentacion
             this.OcultarColumnas();
             lblTotal.Text = "Total Registros: " + Convert.ToString(dataListado.Rows.Count);
             Anulados();
-            
+
         }
 
         private void Buscar()
@@ -253,7 +292,7 @@ namespace Presentacion
 
                 if (this.IsNuevo)
                 {
-                    
+
                     Rpta = MPacientes.Insertar(
                         (this.cbCedula.Text + this.txtCiPaciente.Text),
                         this.txtNombre.Text,
@@ -307,7 +346,7 @@ namespace Presentacion
                     else
                     {
                         this.MensajeOk("Se actualizó de forma correcta el registro");
-                        
+
                     }
 
                 }
@@ -458,7 +497,7 @@ namespace Presentacion
                 Edad--;
             }
 
-            return Edad ;
+            return Edad;
 
         }
 
@@ -529,11 +568,11 @@ namespace Presentacion
 
             this.toolTip1.SetToolTip(this.btnAnular, "Anular");
             this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
-            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
+            this.toolTip1.SetToolTip(this.btnContraer, "Cancelar");
             this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
             this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
             this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
-            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: "+ CalcularEdad());
+            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
 
 
 
@@ -569,56 +608,13 @@ namespace Presentacion
             this.Limpiar();
             this.Habilitar();
             this.cbCedula.Focus();
-            
+
             //ID = 0;
-
-        }
-
-        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            SinErrores();
-            if (!validar())
-            {
-                MensajeError("Falta ingresar algunos datos, serán remarcados");
-            }
-            else
-            {
-                Guardar();
-            }
-        }
-
-        private void dataListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Habilitar();
-
-            //cedula
-            string Cedula = Convert.ToString(this.dataListado.CurrentRow.Cells["Cedula"].Value);
-            this.cbCedula.Text = Cedula.Substring(0, 2);
-            this.txtCiPaciente.Text = Cedula.Remove(0, 2);
-            this.cbCedula.Enabled = false;
-            //
-
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
-            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
-            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["estado_civil"].Value);
-            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["lugar_nacimiento"].Value);
-            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
-            this.txtOcupacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ocupacion"].Value);
-            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
-            this.txtCorreo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Correo"].Value);
-            this.txtPeso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Peso"].Value);
-            this.txtTalla.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Talla"].Value);
-
-            this.IsEditar = true;
-            this.IsNuevo = false;
-            txtNombre.Focus();
-            Botones();
 
         }
 
@@ -643,8 +639,7 @@ namespace Presentacion
 
         private void dtNacimiento_ValueChanged(object sender, EventArgs e)
         {
-            
-            this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
+
         }
 
 
@@ -652,99 +647,52 @@ namespace Presentacion
 
 
         //validaciones
-        
+
 
         private void txtCiPaciente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtCiPaciente, "");
-            if (valid.soloNumeros(e))
-            {
-                errorProvider1.SetError(txtCiPaciente, "En este campo solo se pueden ingresar números");
-            }
+
         }
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtNombre, "");
-            if (valid.soloLetras(e))
-            {
-                errorProvider1.SetError(txtNombre, "En este campo solo se pueden ingresar letras");
-            }
+
         }
 
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtTelefono, "");
-            if (valid.soloNumeros(e))
-            {
-                errorProvider1.SetError(txtTelefono, "En este campo solo se pueden ingresar números");
-            }
+
         }
 
 
         private void dtNacimiento_MouseLeave(object sender, EventArgs e)
         {
 
-            if (CalcularEdad() < 0 || CalcularEdad() > 120)
-            {
-                errorProvider1.SetError(dtNacimiento, "Fecha de Nacimiento no válida");
-            }
         }
 
         private void txtCorreo_Leave(object sender, EventArgs e)
         {
-            errorProvider1.SetError(txtCorreo, "");
-            if ( !(valid.IsValidEmail(txtCorreo.Text)) )
-            {
-                errorProvider1.SetError(txtCorreo, "Escriba un correo válido");
-            }
+
         }
 
         private void txtOcupacion_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtOcupacion, "");
-            if (valid.soloLetras(e))
-            {
-                errorProvider1.SetError(txtOcupacion, "En este campo solo se pueden ingresar letras");
-            }
+
         }
 
         private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtPeso, "");
-            if (valid.soloNumerosyComas(e))
-            {
-                errorProvider1.SetError(txtPeso, "En este campo solo se pueden ingresar números y comas");
-            }
+
         }
 
         private void txtTalla_KeyPress(object sender, KeyPressEventArgs e)
         {
-            errorProvider1.SetError(txtTalla, "");
-            if (valid.soloNumerosyComas(e))
-            {
-                errorProvider1.SetError(txtTalla, "En este campo solo se pueden ingresar números y comas");
-            }
+
         }
 
 
         private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbBuscar.Text == "Cedula")
-            {
-                errorProvider1.SetError(txtBuscar, "");
-                if (valid.soloNumeros(e))
-                {
-                    errorProvider1.SetError(txtBuscar, "En este campo solo se pueden ingresar números");
-                }
-            }
-            if (cbBuscar.Text == "Nombre")
-            {
-                errorProvider1.SetError(txtBuscar, "");
-                if (valid.soloLetras(e))
-                {
-                    errorProvider1.SetError(txtBuscar, "En este campo solo se pueden ingresar letras");
-                }
-            }
+
         }
 
         private void txtCiPaciente_Leave(object sender, EventArgs e)
@@ -765,7 +713,7 @@ namespace Presentacion
                     return;
 
                 //el siguiente condicional es para ver si hay texto escrito en los campos de cedula antes de verificar
-                if ( (this.cbCedula.SelectedIndex != -1) && (this.txtCiPaciente.Text != string.Empty))
+                if ((this.cbCedula.SelectedIndex != -1) && (this.txtCiPaciente.Text != string.Empty))
                 {
 
                     //este condicional es para verificar que la cedula que se quiere ingresar sea unica. 
@@ -783,7 +731,7 @@ namespace Presentacion
 
                 }
 
-                
+
             }
             catch (Exception)
             {
@@ -791,9 +739,5 @@ namespace Presentacion
             }
         }
 
-        private void PanelIngreso_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

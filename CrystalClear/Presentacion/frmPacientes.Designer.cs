@@ -333,6 +333,7 @@
             this.PanelIngreso.Name = "PanelIngreso";
             this.PanelIngreso.Size = new System.Drawing.Size(436, 753);
             this.PanelIngreso.TabIndex = 0;
+            this.PanelIngreso.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelIngreso_Paint);
             // 
             // label15
             // 

@@ -18,7 +18,7 @@ namespace CrystalClear
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MenuInicioMDI());
+            Application.Run(new frmMenuInicioMDI());
         }
     }
 }
