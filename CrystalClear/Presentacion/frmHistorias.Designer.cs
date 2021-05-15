@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistorias));
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -40,6 +40,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btnExpandir = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAnular = new System.Windows.Forms.Button();
@@ -90,6 +91,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtLugarNac = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnContraer = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
@@ -165,7 +167,7 @@
             this.panel5.Location = new System.Drawing.Point(0, 116);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(52, 939);
+            this.panel5.Size = new System.Drawing.Size(85, 939);
             this.panel5.TabIndex = 38;
             // 
             // dataListado
@@ -179,14 +181,14 @@
             this.dataListado.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataListado.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataListado.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataListado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataListado.Location = new System.Drawing.Point(0, 0);
             this.dataListado.Margin = new System.Windows.Forms.Padding(4);
@@ -197,17 +199,18 @@
             this.dataListado.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataListado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(52, 939);
+            this.dataListado.Size = new System.Drawing.Size(85, 939);
             this.dataListado.TabIndex = 37;
             this.dataListado.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellContentDoubleClick);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.btnNuevo);
+            this.panel4.Controls.Add(this.btnExpandir);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.cbBuscar);
             this.panel4.Controls.Add(this.btnEliminar);
-            this.panel4.Controls.Add(this.btnNuevo);
             this.panel4.Controls.Add(this.lblTotal);
             this.panel4.Controls.Add(this.btnAnular);
             this.panel4.Controls.Add(this.btnImprimir);
@@ -216,8 +219,27 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(52, 116);
+            this.panel4.Size = new System.Drawing.Size(85, 116);
             this.panel4.TabIndex = 37;
+            // 
+            // btnExpandir
+            // 
+            this.btnExpandir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExpandir.BackColor = System.Drawing.Color.Transparent;
+            this.btnExpandir.BackgroundImage = global::Presentacion.Properties.Resources.arrows_expand;
+            this.btnExpandir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnExpandir.FlatAppearance.BorderSize = 0;
+            this.btnExpandir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExpandir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnExpandir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExpandir.Location = new System.Drawing.Point(44, 54);
+            this.btnExpandir.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExpandir.Name = "btnExpandir";
+            this.btnExpandir.Size = new System.Drawing.Size(33, 31);
+            this.btnExpandir.TabIndex = 50;
+            this.btnExpandir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExpandir.UseVisualStyleBackColor = false;
+            this.btnExpandir.Click += new System.EventHandler(this.btnExpandir_Click);
             // 
             // btnEliminar
             // 
@@ -242,13 +264,13 @@
             // 
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevo.BackColor = System.Drawing.Color.Transparent;
-            this.btnNuevo.BackgroundImage = global::Presentacion.Properties.Resources.arrows_expand;
+            this.btnNuevo.BackgroundImage = global::Presentacion.Properties.Resources.anadir;
             this.btnNuevo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnNuevo.FlatAppearance.BorderSize = 0;
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(11, 46);
+            this.btnNuevo.Location = new System.Drawing.Point(3, 54);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(33, 31);
@@ -301,7 +323,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(52, 1055);
+            this.panel3.Size = new System.Drawing.Size(85, 1055);
             this.panel3.TabIndex = 1;
             // 
             // panel1
@@ -320,10 +342,10 @@
             this.PanelIngreso.BackColor = System.Drawing.Color.DarkSlateGray;
             this.PanelIngreso.Controls.Add(this.PanelFormulario);
             this.PanelIngreso.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PanelIngreso.Location = new System.Drawing.Point(52, 0);
+            this.PanelIngreso.Location = new System.Drawing.Point(85, 0);
             this.PanelIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.PanelIngreso.Name = "PanelIngreso";
-            this.PanelIngreso.Size = new System.Drawing.Size(1872, 1055);
+            this.PanelIngreso.Size = new System.Drawing.Size(1839, 1055);
             this.PanelIngreso.TabIndex = 0;
             // 
             // PanelFormulario
@@ -340,6 +362,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.btnContraer);
             this.groupBox1.Controls.Add(this.label20);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.btnGuardar);
@@ -420,7 +443,7 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(109, 70);
+            this.btnGuardar.Location = new System.Drawing.Point(95, 70);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(33, 31);
@@ -432,13 +455,13 @@
             // btnCancelar
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCancelar.BackgroundImage = global::Presentacion.Properties.Resources.arrows_contract;
+            this.btnCancelar.BackgroundImage = global::Presentacion.Properties.Resources.cancelar;
             this.btnCancelar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnCancelar.FlatAppearance.BorderSize = 0;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(58, 70);
+            this.btnCancelar.Location = new System.Drawing.Point(136, 69);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(33, 31);
@@ -934,6 +957,24 @@
             this.label1.TabIndex = 172;
             this.label1.Text = "Lugar Nacimiento:";
             // 
+            // btnContraer
+            // 
+            this.btnContraer.BackColor = System.Drawing.Color.Transparent;
+            this.btnContraer.BackgroundImage = global::Presentacion.Properties.Resources.arrows_contract;
+            this.btnContraer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnContraer.FlatAppearance.BorderSize = 0;
+            this.btnContraer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnContraer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnContraer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnContraer.Location = new System.Drawing.Point(54, 70);
+            this.btnContraer.Margin = new System.Windows.Forms.Padding(4);
+            this.btnContraer.Name = "btnContraer";
+            this.btnContraer.Size = new System.Drawing.Size(33, 31);
+            this.btnContraer.TabIndex = 51;
+            this.btnContraer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnContraer.UseVisualStyleBackColor = false;
+            this.btnContraer.Click += new System.EventHandler(this.btnContraer_Click);
+            // 
             // frmHistorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1020,5 +1061,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Button btnExpandir;
+        private System.Windows.Forms.Button btnContraer;
     }
 }
