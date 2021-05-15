@@ -88,6 +88,7 @@
             resources.ApplyResources(this.pacientesToolStripMenuItem, "pacientesToolStripMenuItem");
             this.pacientesToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
             this.pacientesToolStripMenuItem.Name = "pacientesToolStripMenuItem";
+            this.pacientesToolStripMenuItem.Click += new System.EventHandler(this.pacientesToolStripMenuItem_Click);
             // 
             // citasMédicasToolStripMenuItem
             // 
@@ -230,7 +231,7 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Presentacion.Properties.Resources.fondopoligonalminAzul;
+            this.BackgroundImage = global::Presentacion.Properties.Resources.fondopoligonalazul;
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;

@@ -146,8 +146,10 @@ namespace Presentacion
 
 
             btnNuevo.Visible = false;
-            PanelIngreso.Size = new Size(311, PanelIngreso.Size.Height);
+            Expandir();
         }
+
+        
 
         //Deshabilitar los controles del formulario
         private void Deshabilitar()
@@ -157,7 +159,19 @@ namespace Presentacion
             this.cbSexo.Enabled = false;
             this.dtNacimiento.Enabled = false;
             this.txtTelefono.Enabled = false;
+
             btnNuevo.Visible = true;
+            Contraer();
+        }
+
+
+        private void Expandir()
+        {
+            PanelIngreso.Size = new Size(311, PanelIngreso.Size.Height);
+        }
+
+        private void Contraer()
+        {
             PanelIngreso.Size = new Size(0, PanelIngreso.Size.Height);
         }
 
@@ -794,6 +808,16 @@ namespace Presentacion
         private void PanelIngreso_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnExpandir_Click(object sender, EventArgs e)
+        {
+            Expandir();
+        }
+
+        private void btnContraer_Click(object sender, EventArgs e)
+        {
+            Contraer();
         }
     }
 }

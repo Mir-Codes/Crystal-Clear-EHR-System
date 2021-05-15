@@ -185,13 +185,11 @@ namespace Presentacion
 
             btnNuevo.Visible = false;
 
-            PanelIngreso.Size = new Size(this.Size.Width, this.Size.Height);
-            PanelFormulario.Size = new Size(this.Size.Width, this.Size.Height);
-            PanelFormulario.Dock = DockStyle.Fill;
-            groupBox1.Dock = DockStyle.Top;
 
+            Expandir();
 
         }
+
 
         //Deshabilitar los controles del formulario
         private void Deshabilitar()
@@ -202,6 +200,22 @@ namespace Presentacion
             this.dtNacimiento.Enabled = false;
             this.txtTelefono.Enabled = false;
             btnNuevo.Visible = true;
+
+            Contraer();
+        }
+
+        //Expandir PanelIngreso
+        private void Expandir()
+        {
+            PanelIngreso.Size = new Size(this.Size.Width, this.Size.Height);
+            PanelFormulario.Size = new Size(this.Size.Width, this.Size.Height);
+            PanelFormulario.Dock = DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Top;
+        }
+
+        //Contraer PanelIngreso
+        private void Contraer()
+        {
             PanelIngreso.Size = new Size(0, 0);
             PanelFormulario.Size = new Size(0, 0);
         }
@@ -783,6 +797,16 @@ namespace Presentacion
             txtNombre.Focus();
             Botones();
 
+        }
+
+        private void btnExpandir_Click(object sender, EventArgs e)
+        {
+            Expandir();
+        }
+
+        private void btnContraer_Click(object sender, EventArgs e)
+        {
+            Contraer();
         }
     }
 }

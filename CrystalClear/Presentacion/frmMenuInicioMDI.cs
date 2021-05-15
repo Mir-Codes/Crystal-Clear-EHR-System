@@ -103,5 +103,12 @@ namespace Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void pacientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPacientes frm = new frmPacientes();
+            frm.MdiParent = this;
+            frm.Show();
+        }
     }
 }
