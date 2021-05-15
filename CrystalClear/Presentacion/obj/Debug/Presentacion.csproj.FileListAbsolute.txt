@@ -18,4 +18,3 @@ C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\Cry
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.Login.resources
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.frmMenuInicioMDI.es-419.resources
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.frmHistorias.resources
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.aaaaaaaaaaaa.resources

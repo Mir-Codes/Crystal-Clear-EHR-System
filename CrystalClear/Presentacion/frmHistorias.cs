@@ -32,7 +32,7 @@ namespace Presentacion
 
             this.toolTip1.SetToolTip(this.btnAnular, "Anular");
             this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
-            this.toolTip1.SetToolTip(this.btnContraer, "Cancelar");
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
             this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
             this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
@@ -184,8 +184,13 @@ namespace Presentacion
 
 
             btnNuevo.Visible = false;
-            
-            PanelIngreso.Size = new Size(groupBox1.Size.Width, PanelIngreso.Size.Height);
+
+            PanelIngreso.Size = new Size(this.Size.Width, this.Size.Height);
+            PanelFormulario.Size = new Size(this.Size.Width, this.Size.Height);
+            PanelFormulario.Dock = DockStyle.Fill;
+            groupBox1.Dock = DockStyle.Top;
+
+
         }
 
         //Deshabilitar los controles del formulario
@@ -197,7 +202,8 @@ namespace Presentacion
             this.dtNacimiento.Enabled = false;
             this.txtTelefono.Enabled = false;
             btnNuevo.Visible = true;
-            PanelIngreso.Size = new Size(0, PanelIngreso.Size.Height);
+            PanelIngreso.Size = new Size(0, 0);
+            PanelFormulario.Size = new Size(0, 0);
         }
 
         //Habilitar los botones 
@@ -208,7 +214,7 @@ namespace Presentacion
                 this.Habilitar();
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
-                this.btnContraer.Enabled = true;
+                this.btnCancelar.Enabled = true;
 
             }
             else if (this.IsEditar)
@@ -218,14 +224,14 @@ namespace Presentacion
                 this.txtCiPaciente.Enabled = false;
                 this.btnNuevo.Enabled = false;
                 this.btnGuardar.Enabled = true;
-                this.btnContraer.Enabled = true;
+                this.btnCancelar.Enabled = true;
             }
             else
             {
                 this.Deshabilitar();
                 this.btnNuevo.Enabled = true;
                 this.btnGuardar.Enabled = false;
-                this.btnContraer.Enabled = false;
+                this.btnCancelar.Enabled = false;
             }
         }//fin metodo botones
 
@@ -568,7 +574,7 @@ namespace Presentacion
 
             this.toolTip1.SetToolTip(this.btnAnular, "Anular");
             this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
-            this.toolTip1.SetToolTip(this.btnContraer, "Cancelar");
+            this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
             this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
             this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
             this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
@@ -739,5 +745,44 @@ namespace Presentacion
             }
         }
 
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataListado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Habilitar();
+
+            //cedula
+            string Cedula = Convert.ToString(this.dataListado.CurrentRow.Cells["Cedula"].Value);
+            this.cbCedula.Text = Cedula.Substring(0, 2);
+            this.txtCiPaciente.Text = Cedula.Remove(0, 2);
+            this.cbCedula.Enabled = false;
+            //
+
+            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
+            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
+            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
+            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["estado_civil"].Value);
+            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["lugar_nacimiento"].Value);
+            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
+            this.txtOcupacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ocupacion"].Value);
+            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
+            this.txtCorreo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Correo"].Value);
+            this.txtPeso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Peso"].Value);
+            this.txtTalla.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Talla"].Value);
+
+            this.IsEditar = true;
+            this.IsNuevo = false;
+            txtNombre.Focus();
+            Botones();
+
+        }
     }
 }

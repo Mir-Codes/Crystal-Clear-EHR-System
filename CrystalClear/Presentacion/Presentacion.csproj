@@ -43,12 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="aaaaaaaaaaaa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="aaaaaaaaaaaa.Designer.cs">
-      <DependentUpon>aaaaaaaaaaaa.cs</DependentUpon>
-    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="frmHistorias.cs">
       <SubType>Form</SubType>
@@ -98,9 +92,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="aaaaaaaaaaaa.resx">
-      <DependentUpon>aaaaaaaaaaaa.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmHistorias.resx">
       <DependentUpon>frmHistorias.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +121,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fondopoligonalminAzul.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\basura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\discapacitado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\impresora.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disquete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows_expand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrows_contract.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
