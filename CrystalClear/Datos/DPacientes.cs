@@ -12,6 +12,7 @@ namespace Datos
 
     public class DPacientes:Conexion
     {
+        private int _Id;
         private string _Cedula;
         private string _Nombre;
         private DateTime _Fechanac;
@@ -34,6 +35,7 @@ namespace Datos
         //encapsulacion
         //con metodo setter and getter
 
+        public int Id { get => _Id; set => _Id = value; }
         public string Cedula { get => _Cedula; set => _Cedula = value; }
         public string Nombre { get => _Nombre; set => _Nombre = value; }
         public DateTime Fechanac { get => _Fechanac; set => _Fechanac = value; }
@@ -50,6 +52,7 @@ namespace Datos
         public string Talla { get => _Talla; set => _Talla = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
         public int Estado { get => _Estado; set => _Estado = value; }
+        
 
 
 
@@ -61,11 +64,12 @@ namespace Datos
         }
 
         //constructor con parametros
-        public DPacientes(string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugarnac, string direccion, string ocupacion, string telefono, string estadovivomuerto, string imagepath, string peso, string talla, string textobuscar, int estado )
+        public DPacientes(int id, string cedula, string nombre, DateTime fechanac, string sexo, string estcivil, string lugarnac, string direccion, string ocupacion, string telefono, string estadovivomuerto, string imagepath, string peso, string talla, string textobuscar, int estado )
         {
             //this se refiere a esta clase
             //this.Cedula es del metodo getter y setter
             //cedula en cambio, es el parametro que esta recibiendo el metodo
+            this.Id = id;
             this.Cedula = cedula;
             this.Nombre = nombre;
             this.Fechanac = fechanac;

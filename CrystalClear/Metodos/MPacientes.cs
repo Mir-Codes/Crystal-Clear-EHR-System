@@ -77,6 +77,8 @@ namespace Metodos
         //    return Objeto.Mostrar(TextoBuscar);
         //}
 
+
+
         //Metodo BuscarNombre que llama al metodo BuscarNombre de la clase DPaciente de la capa Datos
 
         public static DataTable BuscarNombre(string textobuscar)

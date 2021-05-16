@@ -33,7 +33,7 @@ namespace Presentacion
             this.toolTip1.SetToolTip(this.btnAnular, "Anular");
             this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
             this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
-            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.toolTip1.SetToolTip(this.btnGuardarHistoria, "Guardar");
             this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
             this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
             this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
@@ -167,6 +167,8 @@ namespace Presentacion
             this.txtCorreo.Text = string.Empty;
             this.txtPeso.Text = string.Empty;
             this.txtTalla.Text = string.Empty;
+
+
         }
 
         //Habilitar los controles del formulario
@@ -211,6 +213,7 @@ namespace Presentacion
             PanelFormulario.Size = new Size(this.Size.Width, this.Size.Height);
             PanelFormulario.Dock = DockStyle.Fill;
             groupBox1.Dock = DockStyle.Top;
+
         }
 
         //Contraer PanelIngreso
@@ -227,24 +230,24 @@ namespace Presentacion
             {
                 this.Habilitar();
                 this.btnNuevo.Enabled = false;
-                this.btnGuardar.Enabled = true;
+                this.btnGuardarHistoria.Enabled = true;
                 this.btnCancelar.Enabled = true;
 
             }
             else if (this.IsEditar)
             {
-                this.Habilitar();
+                //this.Habilitar();
                 this.cbCedula.Enabled = false;
                 this.txtCiPaciente.Enabled = false;
                 this.btnNuevo.Enabled = false;
-                this.btnGuardar.Enabled = true;
+                this.btnGuardarHistoria.Enabled = true;
                 this.btnCancelar.Enabled = true;
             }
             else
             {
                 this.Deshabilitar();
                 this.btnNuevo.Enabled = true;
-                this.btnGuardar.Enabled = false;
+                this.btnGuardarHistoria.Enabled = false;
                 this.btnCancelar.Enabled = false;
             }
         }//fin metodo botones
@@ -302,32 +305,114 @@ namespace Presentacion
         }
 
 
+        
+        private void CargarDatosSegunCedula() //sirve para cargar los datos del paciente segun la ci que se escriba
+        {
+
+            string cedula_seleccionada = (this.cbCedula.Text + this.txtCiPaciente.Text);
+
+            DataTable dt = new DataTable();
+            dt = MPacientes.BuscarCedula(cedula_seleccionada);
 
 
-        private void Guardar()
+            if (dt.Rows.Count != 0)  // verifica si hay registro de paciente con la cedula seleccionada antes de cargar los datos
+            {
+                int id_pac = (from DataRow registro in dt.Rows
+                              where (string)registro["cedula"] == cedula_seleccionada
+                              select (int)registro["id"]).FirstOrDefault();
+
+
+                lbl_id_paciente.Text = "ID del paciente: " + id_pac.ToString();
+
+
+                this.txtNombre.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                        where (string)registro["cedula"] == cedula_seleccionada
+                                                        select (string)registro["nombre"]).FirstOrDefault());
+
+                this.dtNacimiento.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                           where (string)registro["cedula"] == cedula_seleccionada
+                                                           select (DateTime)registro["fecha_nacimiento"]).FirstOrDefault());
+
+                this.cbSexo.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                     where (string)registro["cedula"] == cedula_seleccionada
+                                                     select (string)registro["sexo"]).FirstOrDefault());
+
+                this.cbEstCivil.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                         where (string)registro["cedula"] == cedula_seleccionada
+                                                         select (string)registro["estado_civil"]).FirstOrDefault());
+
+                this.txtLugarNac.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                          where (string)registro["cedula"] == cedula_seleccionada
+                                                          select (string)registro["lugar_nacimiento"]).FirstOrDefault());
+
+                this.txtDireccion.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                           where (string)registro["cedula"] == cedula_seleccionada
+                                                           select (string)registro["direccion"]).FirstOrDefault());
+
+                this.txtOcupacion.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                           where (string)registro["cedula"] == cedula_seleccionada
+                                                           select (string)registro["ocupacion"]).FirstOrDefault());
+
+                this.txtTelefono.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                          where (string)registro["cedula"] == cedula_seleccionada
+                                                          select (string)registro["telefono"]).FirstOrDefault());
+
+                this.txtCorreo.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                        where (string)registro["cedula"] == cedula_seleccionada
+                                                        select (string)registro["correo"]).FirstOrDefault());
+
+                this.txtPeso.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                      where (string)registro["cedula"] == cedula_seleccionada
+                                                      select (string)registro["peso"]).FirstOrDefault());
+
+                this.txtTalla.Text = Convert.ToString((from DataRow registro in dt.Rows
+                                                       where (string)registro["cedula"] == cedula_seleccionada
+                                                       select (string)registro["talla"]).FirstOrDefault());
+            }
+
+
+
+
+
+        }
+
+
+        private void GuardarHistoria()
         {
             try
             {
                 string Rpta = "";
 
+                string cedula_seleccionada = (this.cbCedula.Text + this.txtCiPaciente.Text);
+
+                DataTable dt = new DataTable();
+                dt = MPacientes.BuscarCedula(cedula_seleccionada);
+
+                int id_pac = (from DataRow registro in dt.Rows
+                              where (string)registro["cedula"] == cedula_seleccionada
+                              select (int)registro["id"]).FirstOrDefault();
+
                 if (this.IsNuevo)
                 {
-
-                    Rpta = MPacientes.Insertar(
-                        (this.cbCedula.Text + this.txtCiPaciente.Text),
-                        this.txtNombre.Text,
-                        Convert.ToDateTime(dtNacimiento.Text),
-                        this.cbSexo.Text,
-                        this.cbEstCivil.Text,
-                        this.txtLugarNac.Text,
-                        this.txtDireccion.Text,
-                        this.txtOcupacion.Text,
-                        this.txtTelefono.Text,
-                        this.txtCorreo.Text,
-                        "1",
-                        "ejemplo imagepath",
-                        this.txtPeso.Text,
-                        this.txtTalla.Text,
+                    //vamos a guardar una nueva historia
+                    Rpta = MHistorias.Insertar(id_pac,
+                        Convert.ToDateTime(dtFechaConsulta.Text),
+                        this.txtRazon.Text,
+                        this.txtEnfermedadActual.Text,
+                        this.chkbxInsomnia.Checked ? 1:0,
+                        this.chkbxEstrenimiento.Checked ? 1 : 0,
+                        this.txtHistoriaFamiliar.Text,
+                        this.txtHistoriaPersonal.Text,
+                        this.txtTratamientoActual.Text,
+                        this.txtExamenFisico.Text,
+                        this.txtLaboratorio.Text,
+                        this.txtECG.Text,
+                        this.txtRayosx.Text,
+                        this.txtEcocardiograma.Text,
+                        this.txtOtrosParaclinicos.Text,
+                        this.txtDiagnosticos.Text,
+                        this.txtPlanEstudio.Text,
+                        this.txtPlanTerapeutico.Text,
                         1 // 1 significa Estado = activo  y 0 significa Estado = anulado
 
                         );
@@ -336,23 +421,28 @@ namespace Presentacion
                 }
                 else
                 {
-                    //Vamos a modificar un Paciente
-                    Rpta = MPacientes.Editar(
-                        (this.cbCedula.Text + this.txtCiPaciente.Text),
-                        this.txtNombre.Text,
-                        Convert.ToDateTime(dtNacimiento.Text),
-                        this.cbSexo.Text,
-                        this.cbEstCivil.Text,
-                        this.txtLugarNac.Text,
-                        this.txtDireccion.Text,
-                        this.txtOcupacion.Text,
-                        this.txtTelefono.Text,
-                        this.txtCorreo.Text,
-                        "1",
-                        "ejemplo imagepath",
-                        this.txtPeso.Text,
-                        this.txtTalla.Text
-                        );
+                    ////Vamos a modificar una historia
+                    //Rpta = MHistorias.Editar(id_pac,
+                    //    Convert.ToDateTime(dtFechaConsulta.Text),
+                    //    this.txtRazon.Text,
+                    //    this.txtEnfermedadActual.Text,
+                    //    this.chkbxInsomnia.Checked ? 1 : 0,
+                    //    this.chkbxEstrenimiento.Checked ? 1 : 0,
+                    //    this.txtHistoriaFamiliar.Text,
+                    //    this.txtHistoriaPersonal.Text,
+                    //    this.txtTratamientoActual.Text,
+                    //    this.txtExamenFisico.Text,
+                    //    this.txtLaboratorio.Text,
+                    //    this.txtECG.Text,
+                    //    this.txtRayosx.Text,
+                    //    this.txtEcocardiograma.Text,
+                    //    this.txtOtrosParaclinicos.Text,
+                    //    this.txtDiagnosticos.Text,
+                    //    this.txtPlanEstudio.Text,
+                    //    this.txtPlanTerapeutico.Text,
+                    //    1 // 1 significa Estado = activo  y 0 significa Estado = anulado
+
+                    //    );
                 }
                 //Si la respuesta fue OK, fue porque se modificó
                 //o insertó el Trabajador
@@ -387,6 +477,7 @@ namespace Presentacion
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+
 
 
         private void EliminarItems()
@@ -589,9 +680,9 @@ namespace Presentacion
             this.toolTip1.SetToolTip(this.btnAnular, "Anular");
             this.toolTip1.SetToolTip(this.btnEliminar, "Eliminar");
             this.toolTip1.SetToolTip(this.btnCancelar, "Cancelar");
-            this.toolTip1.SetToolTip(this.btnGuardar, "Guardar");
+            this.toolTip1.SetToolTip(this.btnGuardarHistoria, "Guardar");
             this.toolTip1.SetToolTip(this.btnImprimir, "Imprimir");
-            this.toolTip1.SetToolTip(this.btnNuevo, "Nuevo paciente");
+            this.toolTip1.SetToolTip(this.btnNuevo, "Nueva Historia");
             this.toolTip1.SetToolTip(this.dtNacimiento, "Edad: " + CalcularEdad());
 
 
@@ -633,9 +724,22 @@ namespace Presentacion
 
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
 
+       
+
+        //Guardar historia
+        private void btnGuardarHistoria_Click(object sender, EventArgs e)
+        {
+            SinErrores();
+            if (!validar())
+            {
+                MensajeError("Falta ingresar algunos datos, serán remarcados");
+            }
+            else
+            {
+                GuardarHistoria();
+
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -671,6 +775,9 @@ namespace Presentacion
 
         private void txtCiPaciente_KeyPress(object sender, KeyPressEventArgs e)
         {
+
+            
+               
 
         }
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -710,20 +817,8 @@ namespace Presentacion
         }
 
 
-        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
-        {
+       
 
-        }
-
-        private void txtCiPaciente_Leave(object sender, EventArgs e)
-        {
-            CedulaUnica();
-        }
-
-        private void cbCedula_Leave(object sender, EventArgs e)
-        {
-            CedulaUnica();
-        }
 
         private void CedulaUnica()
         {
@@ -740,11 +835,22 @@ namespace Presentacion
                     //Si la datatable tiene almenos un registro significa que ya existe esa cedula en la base de datos
                     if ((MPacientes.BuscarCedula((this.cbCedula.Text + this.txtCiPaciente.Text))).Rows.Count != 0)
                     {
-                        MessageBox.Show("Ya el paciente C.I: " + (this.cbCedula.Text + this.txtCiPaciente.Text) + " está ingresado", "Crystal Clear", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.txtCiPaciente.Text = string.Empty;
-                        this.cbCedula.SelectedIndex = -1;
-                        this.txtCiPaciente.Focus();
+                        MessageBox.Show("Ya el paciente C.I: " + (this.cbCedula.Text + this.txtCiPaciente.Text) + " está ingresado", "Crystal Clear", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //this.txtCiPaciente.Text = string.Empty;
+                        //this.cbCedula.SelectedIndex = -1;
+                        //this.txtCiPaciente.Focus();
+                    }else
+                    {
+                        MessageBox.Show("El paciente C.I: " + (this.cbCedula.Text + this.txtCiPaciente.Text) + " no ha sido registrado todavia! Porfavor registrelo en el formulario Pacientes", "Crystal Clear", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        frmPacientes frm = new frmPacientes();
+                        frm.Show();
+
+                        //this.txtCiPaciente.Text = string.Empty;
+                        //this.cbCedula.SelectedIndex = -1;
+                        //this.txtCiPaciente.Focus();
                     }
+
 
                     Mostrar();
 
@@ -771,15 +877,35 @@ namespace Presentacion
 
         private void dataListado_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Habilitar();
+            //Habilitar();
+
+            Expandir();
 
             //cedula
             string Cedula = Convert.ToString(this.dataListado.CurrentRow.Cells["Cedula"].Value);
             this.cbCedula.Text = Cedula.Substring(0, 2);
             this.txtCiPaciente.Text = Cedula.Remove(0, 2);
-            this.cbCedula.Enabled = false;
-            //
 
+            this.cbCedula.Enabled = false;
+            this.txtCiPaciente.Enabled = false;
+            this.txtNombre.Enabled = false;
+            this.cbSexo.Enabled = false;
+            this.dtNacimiento.Enabled = false;
+            this.txtTelefono.Enabled = false;
+            this.txtCorreo.Enabled = false;
+            this.txtLugarNac.Enabled = false;
+            this.txtOcupacion.Enabled = false;
+            this.txtDireccion.Enabled = false;
+            this.txtPeso.Enabled = false;
+            this.txtTalla.Enabled = false;
+            this.cbEstCivil.Enabled = false;
+            
+
+
+
+            CargarDatosSegunCedula();
+
+            //
             this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
             this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
             this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
@@ -809,5 +935,23 @@ namespace Presentacion
             Contraer();
         }
 
+        private void txtCiPaciente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+
+                if (cbCedula.SelectedIndex == -1 || txtCiPaciente.Text == "")
+                {
+                    MessageBox.Show("Campos cedula vacios, porfavor ingrese la cedula a cargar");
+                }
+                else
+                {
+                    CedulaUnica();
+                    CargarDatosSegunCedula();
+                }
+
+                
+            }
+        }
     }
 }
