@@ -1,5 +1,0 @@
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Datos\bin\Debug\Datos.dll
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Datos\bin\Debug\Datos.pdb
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Datos\obj\Debug\Datos.dll
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Datos\obj\Debug\Datos.pdb
-C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
