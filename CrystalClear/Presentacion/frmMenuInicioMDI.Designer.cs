@@ -46,6 +46,7 @@
             this.cerrarSesiónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +96,7 @@
             resources.ApplyResources(this.citasMédicasToolStripMenuItem, "citasMédicasToolStripMenuItem");
             this.citasMédicasToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
             this.citasMédicasToolStripMenuItem.Name = "citasMédicasToolStripMenuItem";
+            this.citasMédicasToolStripMenuItem.Click += new System.EventHandler(this.citasMédicasToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -173,8 +175,16 @@
             // configuraciónToolStripMenuItem
             // 
             resources.ApplyResources(this.configuraciónToolStripMenuItem, "configuraciónToolStripMenuItem");
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administrarUsuariosToolStripMenuItem});
             this.configuraciónToolStripMenuItem.ForeColor = System.Drawing.Color.DarkCyan;
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            // 
+            // administrarUsuariosToolStripMenuItem
+            // 
+            resources.ApplyResources(this.administrarUsuariosToolStripMenuItem, "administrarUsuariosToolStripMenuItem");
+            this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
+            this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -275,6 +285,7 @@
         private System.Windows.Forms.ToolStripMenuItem sistemaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cerrarSesiónToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem administrarUsuariosToolStripMenuItem;
     }
 }
 

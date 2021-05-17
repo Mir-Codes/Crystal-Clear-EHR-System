@@ -110,5 +110,17 @@ namespace Presentacion
             frm.MdiParent = this;
             frm.Show();
         }
+
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuarios frm = new frmUsuarios();
+            frm.Show();
+        }
+
+        private void citasMédicasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCitasMedicas frm = new frmCitasMedicas();
+            frm.Show();
+        }
     }
 }

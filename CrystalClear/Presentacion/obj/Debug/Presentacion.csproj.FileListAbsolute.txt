@@ -18,3 +18,5 @@ C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\Cry
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.csproj.CopyComplete
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.dll
 C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.pdb
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.frmUsuarios.resources
+C:\Users\Usuario\Documents\Crystal-Clear-EHR-System\Crystal-Clear-EHR-System\CrystalClear\Presentacion\obj\Debug\Presentacion.frmCitasMedicas.resources
