@@ -126,15 +126,6 @@
   <data name="citasMédicasToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Citas Médicas</value>
   </data>
-  <data name="windowsMenu.Text" xml:space="preserve">
-    <value>Ventanas</value>
-  </data>
-  <data name="sistemaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Sistema</value>
-  </data>
-  <data name="helpMenu.Text" xml:space="preserve">
-    <value>Ayuda</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 26</value>
@@ -154,6 +145,9 @@
   <data name="arrangeIconsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 26</value>
   </data>
+  <data name="windowsMenu.Text" xml:space="preserve">
+    <value>Ventanas</value>
+  </data>
   <data name="cerrarSesiónToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 26</value>
   </data>
@@ -165,6 +159,9 @@
   </data>
   <data name="salirToolStripMenuItem.Text" xml:space="preserve">
     <value>Salir</value>
+  </data>
+  <data name="sistemaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sistema</value>
   </data>
   <data name="indexToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -212,6 +209,9 @@
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 26</value>
+  </data>
+  <data name="helpMenu.Text" xml:space="preserve">
+    <value>Ayuda</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Crystal Clear - Sistema de Control de Historias Clínicas Electronicas </value>

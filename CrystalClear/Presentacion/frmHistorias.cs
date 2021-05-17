@@ -14,6 +14,12 @@ namespace Presentacion
 {
     public partial class frmHistorias : Form
     {
+        private bool IsNuevo = false;
+
+        private bool IsEditar = false;
+
+        LimitantesDeIngreso valid = new LimitantesDeIngreso();
+
         public frmHistorias()
         {
             InitializeComponent();
@@ -60,11 +66,6 @@ namespace Presentacion
         }
 
 
-        private bool IsNuevo = false;
-
-        private bool IsEditar = false;
-
-        LimitantesDeIngreso valid = new LimitantesDeIngreso();
 
 
         private bool validar()
@@ -168,6 +169,24 @@ namespace Presentacion
             this.txtPeso.Text = string.Empty;
             this.txtTalla.Text = string.Empty;
 
+            
+            this.dtFechaConsulta.Text = string.Empty;
+            this.txtRazon.Text = string.Empty;
+            this.txtEnfermedadActual.Text = string.Empty;
+            this.txtHistoriaFamiliar.Text = string.Empty;
+            this.txtHistoriaPersonal.Text = string.Empty;
+            this.txtTratamientoActual.Text = string.Empty;
+            this.txtExamenFisico.Text = string.Empty;
+            this.txtLaboratorio.Text = string.Empty;
+            this.txtECG.Text = string.Empty;
+            this.txtRayosx.Text = string.Empty;
+            this.txtEcocardiograma.Text = string.Empty;
+            this.txtOtrosParaclinicos.Text = string.Empty;
+            this.txtDiagnosticos.Text = string.Empty;
+            this.txtPlanEstudio.Text = string.Empty;
+            this.txtPlanTerapeutico.Text = string.Empty;
+
+
 
         }
 
@@ -264,7 +283,7 @@ namespace Presentacion
         //Metodo Mostrar
         private void Mostrar()
         {
-            this.dataListado.DataSource = MPacientes.BuscarNombre("");
+            this.dataListado.DataSource = MPacientes.BuscarCedula("");
             this.OcultarColumnas();
             dataListado.ClearSelection();
             lblTotal.Text = "Total de registros: " + Convert.ToString(dataListado.Rows.Count);
@@ -315,14 +334,12 @@ namespace Presentacion
             dt = MPacientes.BuscarCedula(cedula_seleccionada);
 
 
-            if (dt.Rows.Count != 0)  // verifica si hay registro de paciente con la cedula seleccionada antes de cargar los datos
-            {
                 int id_pac = (from DataRow registro in dt.Rows
                               where (string)registro["cedula"] == cedula_seleccionada
                               select (int)registro["id"]).FirstOrDefault();
 
 
-                lbl_id_paciente.Text = "ID del paciente: " + id_pac.ToString();
+                lbl_id_paciente.Text = id_pac.ToString();
 
 
                 this.txtNombre.Text = Convert.ToString((from DataRow registro in dt.Rows
@@ -368,17 +385,77 @@ namespace Presentacion
                 this.txtTalla.Text = Convert.ToString((from DataRow registro in dt.Rows
                                                        where (string)registro["cedula"] == cedula_seleccionada
                                                        select (string)registro["talla"]).FirstOrDefault());
-            }
+            
 
 
 
+            DataTable dt_historias = new DataTable();
+            dt_historias = MHistorias.BuscarIdPaciente(id_pac);
 
+            this.txtRazon.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                   where (int)registro["paciente_id"] == id_pac
+                                                   select (string)registro["razon_consulta"]).FirstOrDefault());
+
+            this.txtEnfermedadActual.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                              where (int)registro["paciente_id"] == id_pac
+                                                              select (string)registro["enfermedad_actual"]).FirstOrDefault());
+
+            this.txtHistoriaFamiliar.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                              where (int)registro["paciente_id"] == id_pac
+                                                              select (string)registro["historia_familiar"]).FirstOrDefault());
+
+            this.txtHistoriaPersonal.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                              where (int)registro["paciente_id"] == id_pac
+                                                              select (string)registro["historia_personal"]).FirstOrDefault());
+
+            this.txtTratamientoActual.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                               where (int)registro["paciente_id"] == id_pac
+                                                               select (string)registro["tratamiento_actual"]).FirstOrDefault());
+
+            this.txtExamenFisico.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                          where (int)registro["paciente_id"] == id_pac
+                                                          select (string)registro["examen_fisico"]).FirstOrDefault());
+
+            this.txtLaboratorio.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                         where (int)registro["paciente_id"] == id_pac
+                                                         select (string)registro["laboratorio"]).FirstOrDefault());
+
+            this.txtECG.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                              where (int)registro["paciente_id"] == id_pac
+                                              select (string)registro["ECG"]).FirstOrDefault());
+
+            this.txtRayosx.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                    where (int)registro["paciente_id"] == id_pac
+                                                    select (string)registro["rayos_x"]).FirstOrDefault());
+
+            this.txtEcocardiograma.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                            where (int)registro["paciente_id"] == id_pac
+                                                            select (string)registro["historia_familiar"]).FirstOrDefault());
+
+            this.txtOtrosParaclinicos.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                               where (int)registro["paciente_id"] == id_pac
+                                                               select (string)registro["otras_paraclinicas"]).FirstOrDefault());
+
+            this.txtDiagnosticos.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                          where (int)registro["paciente_id"] == id_pac
+                                                          select (string)registro["diagnosticos"]).FirstOrDefault());
+
+            this.txtPlanEstudio.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                         where (int)registro["paciente_id"] == id_pac
+                                                         select (string)registro["plan_estudio"]).FirstOrDefault());
+
+            this.txtPlanTerapeutico.Text = Convert.ToString((from DataRow registro in dt_historias.Rows
+                                                         where (int)registro["paciente_id"] == id_pac
+                                                         select (string)registro["plan_terapeutico"]).FirstOrDefault());
 
         }
 
 
+
         private void GuardarHistoria()
         {
+
+
             try
             {
                 string Rpta = "";
@@ -421,28 +498,27 @@ namespace Presentacion
                 }
                 else
                 {
-                    ////Vamos a modificar una historia
-                    //Rpta = MHistorias.Editar(id_pac,
-                    //    Convert.ToDateTime(dtFechaConsulta.Text),
-                    //    this.txtRazon.Text,
-                    //    this.txtEnfermedadActual.Text,
-                    //    this.chkbxInsomnia.Checked ? 1 : 0,
-                    //    this.chkbxEstrenimiento.Checked ? 1 : 0,
-                    //    this.txtHistoriaFamiliar.Text,
-                    //    this.txtHistoriaPersonal.Text,
-                    //    this.txtTratamientoActual.Text,
-                    //    this.txtExamenFisico.Text,
-                    //    this.txtLaboratorio.Text,
-                    //    this.txtECG.Text,
-                    //    this.txtRayosx.Text,
-                    //    this.txtEcocardiograma.Text,
-                    //    this.txtOtrosParaclinicos.Text,
-                    //    this.txtDiagnosticos.Text,
-                    //    this.txtPlanEstudio.Text,
-                    //    this.txtPlanTerapeutico.Text,
-                    //    1 // 1 significa Estado = activo  y 0 significa Estado = anulado
-
-                    //    );
+                    //Vamos a modificar una historia
+                    Rpta = MHistorias.Editar(id_pac,
+                        Convert.ToDateTime(dtFechaConsulta.Text),
+                        this.txtRazon.Text,
+                        this.txtEnfermedadActual.Text,
+                        this.chkbxInsomnia.Checked ? 1 : 0,
+                        this.chkbxEstrenimiento.Checked ? 1 : 0,
+                        this.txtHistoriaFamiliar.Text,
+                        this.txtHistoriaPersonal.Text,
+                        this.txtTratamientoActual.Text,
+                        this.txtExamenFisico.Text,
+                        this.txtLaboratorio.Text,
+                        this.txtECG.Text,
+                        this.txtRayosx.Text,
+                        this.txtEcocardiograma.Text,
+                        this.txtOtrosParaclinicos.Text,
+                        this.txtDiagnosticos.Text,
+                        this.txtPlanEstudio.Text,
+                        this.txtPlanTerapeutico.Text,
+                        1 // 1 significa Estado = activo  y 0 significa Estado = anulado
+                        );
                 }
                 //Si la respuesta fue OK, fue porque se modificó
                 //o insertó el Trabajador
@@ -474,7 +550,7 @@ namespace Presentacion
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message + ex.StackTrace);
+                MessageBox.Show(ex.Message + ex.StackTrace + ex.ToString());
             }
         }
 
@@ -879,12 +955,20 @@ namespace Presentacion
         {
             //Habilitar();
 
+
+            this.IsEditar = true;
+            this.IsNuevo = false;
+
             Expandir();
 
             //cedula
             string Cedula = Convert.ToString(this.dataListado.CurrentRow.Cells["Cedula"].Value);
             this.cbCedula.Text = Cedula.Substring(0, 2);
             this.txtCiPaciente.Text = Cedula.Remove(0, 2);
+
+
+                CedulaUnica();
+                CargarDatosSegunCedula();
 
             this.cbCedula.Enabled = false;
             this.txtCiPaciente.Enabled = false;
@@ -899,28 +983,8 @@ namespace Presentacion
             this.txtPeso.Enabled = false;
             this.txtTalla.Enabled = false;
             this.cbEstCivil.Enabled = false;
-            
 
 
-
-            CargarDatosSegunCedula();
-
-            //
-            this.txtNombre.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Nombre"].Value);
-            this.dtNacimiento.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["fecha_nacimiento"].Value);
-            this.cbSexo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Sexo"].Value);
-            this.cbEstCivil.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["estado_civil"].Value);
-            this.txtLugarNac.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["lugar_nacimiento"].Value);
-            this.txtDireccion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Direccion"].Value);
-            this.txtOcupacion.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Ocupacion"].Value);
-            this.txtTelefono.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Telefono"].Value);
-            this.txtCorreo.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Correo"].Value);
-            this.txtPeso.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Peso"].Value);
-            this.txtTalla.Text = Convert.ToString(this.dataListado.CurrentRow.Cells["Talla"].Value);
-
-            this.IsEditar = true;
-            this.IsNuevo = false;
-            txtNombre.Focus();
             Botones();
 
         }

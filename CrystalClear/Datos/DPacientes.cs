@@ -497,6 +497,7 @@ namespace Datos
             catch (Exception ex)
             {
                 DtResultado = null;
+                ex.ToString();
             }
             return DtResultado;
            
@@ -535,6 +536,7 @@ namespace Datos
             catch (Exception ex)
             {
                 DtResultado = null;
+                ex.ToString();
             }
             return DtResultado;
 
