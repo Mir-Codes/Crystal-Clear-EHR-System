@@ -114,12 +114,14 @@ namespace Presentacion
         private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmUsuarios frm = new frmUsuarios();
+            frm.MdiParent = this;
             frm.Show();
         }
 
         private void citasMédicasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCitasMedicas frm = new frmCitasMedicas();
+            frm.MdiParent = this;
             frm.Show();
         }
     }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataListado = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnExpandir = new System.Windows.Forms.Button();
@@ -41,6 +41,12 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.PanelIngreso = new System.Windows.Forms.Panel();
+            this.chkbxEvalCardiovascular = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.chkbxECG = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.chkbxEKG = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.gp_consulta = new System.Windows.Forms.GroupBox();
             this.chkbxConsulta = new System.Windows.Forms.CheckBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -70,12 +76,17 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.chkbxEKG = new System.Windows.Forms.CheckBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.chkbxECG = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.chkbxEvalCardiovascular = new System.Windows.Forms.CheckBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.cbMetodoPago = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.rbPagoRealizadoSi = new System.Windows.Forms.RadioButton();
+            this.rbPagoRealizadoNo = new System.Windows.Forms.RadioButton();
+            this.txtComentarios = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.panel4.SuspendLayout();
             this.PanelIngreso.SuspendLayout();
@@ -93,14 +104,14 @@
             this.dataListado.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataListado.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Orange;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataListado.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Orange;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataListado.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataListado.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataListado.Location = new System.Drawing.Point(0, 116);
             this.dataListado.Margin = new System.Windows.Forms.Padding(4);
@@ -111,7 +122,7 @@
             this.dataListado.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataListado.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListado.Size = new System.Drawing.Size(860, 939);
+            this.dataListado.Size = new System.Drawing.Size(677, 939);
             this.dataListado.TabIndex = 40;
             // 
             // panel4
@@ -130,7 +141,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(860, 116);
+            this.panel4.Size = new System.Drawing.Size(677, 116);
             this.panel4.TabIndex = 39;
             // 
             // btnExpandir
@@ -143,7 +154,7 @@
             this.btnExpandir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExpandir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnExpandir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExpandir.Location = new System.Drawing.Point(823, 44);
+            this.btnExpandir.Location = new System.Drawing.Point(640, 44);
             this.btnExpandir.Margin = new System.Windows.Forms.Padding(4);
             this.btnExpandir.Name = "btnExpandir";
             this.btnExpandir.Size = new System.Drawing.Size(33, 31);
@@ -206,13 +217,14 @@
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(782, 44);
+            this.btnNuevo.Location = new System.Drawing.Point(599, 44);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(33, 31);
             this.btnNuevo.TabIndex = 9;
             this.btnNuevo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // lblTotal
             // 
@@ -276,6 +288,17 @@
             // PanelIngreso
             // 
             this.PanelIngreso.BackColor = System.Drawing.Color.White;
+            this.PanelIngreso.Controls.Add(this.label22);
+            this.PanelIngreso.Controls.Add(this.dateTimePicker1);
+            this.PanelIngreso.Controls.Add(this.txtComentarios);
+            this.PanelIngreso.Controls.Add(this.label21);
+            this.PanelIngreso.Controls.Add(this.rbPagoRealizadoNo);
+            this.PanelIngreso.Controls.Add(this.rbPagoRealizadoSi);
+            this.PanelIngreso.Controls.Add(this.label20);
+            this.PanelIngreso.Controls.Add(this.cbMetodoPago);
+            this.PanelIngreso.Controls.Add(this.label19);
+            this.PanelIngreso.Controls.Add(this.txtMonto);
+            this.PanelIngreso.Controls.Add(this.label18);
             this.PanelIngreso.Controls.Add(this.chkbxEvalCardiovascular);
             this.PanelIngreso.Controls.Add(this.label17);
             this.PanelIngreso.Controls.Add(this.chkbxECG);
@@ -308,11 +331,74 @@
             this.PanelIngreso.Controls.Add(this.label4);
             this.PanelIngreso.Controls.Add(this.label8);
             this.PanelIngreso.Dock = System.Windows.Forms.DockStyle.Right;
-            this.PanelIngreso.Location = new System.Drawing.Point(860, 0);
+            this.PanelIngreso.Location = new System.Drawing.Point(677, 0);
             this.PanelIngreso.Margin = new System.Windows.Forms.Padding(4);
             this.PanelIngreso.Name = "PanelIngreso";
-            this.PanelIngreso.Size = new System.Drawing.Size(565, 1055);
+            this.PanelIngreso.Size = new System.Drawing.Size(499, 1055);
             this.PanelIngreso.TabIndex = 38;
+            // 
+            // chkbxEvalCardiovascular
+            // 
+            this.chkbxEvalCardiovascular.AutoSize = true;
+            this.chkbxEvalCardiovascular.Location = new System.Drawing.Point(256, 654);
+            this.chkbxEvalCardiovascular.Name = "chkbxEvalCardiovascular";
+            this.chkbxEvalCardiovascular.Size = new System.Drawing.Size(18, 17);
+            this.chkbxEvalCardiovascular.TabIndex = 127;
+            this.chkbxEvalCardiovascular.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label17.Location = new System.Drawing.Point(281, 640);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(214, 32);
+            this.label17.TabIndex = 126;
+            this.label17.Text = "Eval. Cardiovascular";
+            // 
+            // chkbxECG
+            // 
+            this.chkbxECG.AutoSize = true;
+            this.chkbxECG.Location = new System.Drawing.Point(256, 610);
+            this.chkbxECG.Name = "chkbxECG";
+            this.chkbxECG.Size = new System.Drawing.Size(18, 17);
+            this.chkbxECG.TabIndex = 125;
+            this.chkbxECG.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label16.Location = new System.Drawing.Point(278, 596);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(57, 32);
+            this.label16.TabIndex = 124;
+            this.label16.Text = "ECG";
+            // 
+            // chkbxEKG
+            // 
+            this.chkbxEKG.AutoSize = true;
+            this.chkbxEKG.Location = new System.Drawing.Point(256, 561);
+            this.chkbxEKG.Name = "chkbxEKG";
+            this.chkbxEKG.Size = new System.Drawing.Size(18, 17);
+            this.chkbxEKG.TabIndex = 123;
+            this.chkbxEKG.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label10.Location = new System.Drawing.Point(278, 547);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(54, 32);
+            this.label10.TabIndex = 122;
+            this.label10.Text = "EKG";
             // 
             // gp_consulta
             // 
@@ -695,74 +781,144 @@
             this.label8.TabIndex = 54;
             this.label8.Text = "Sexo:";
             // 
-            // chkbxEKG
+            // txtMonto
             // 
-            this.chkbxEKG.AutoSize = true;
-            this.chkbxEKG.Location = new System.Drawing.Point(256, 561);
-            this.chkbxEKG.Name = "chkbxEKG";
-            this.chkbxEKG.Size = new System.Drawing.Size(18, 17);
-            this.chkbxEKG.TabIndex = 123;
-            this.chkbxEKG.UseVisualStyleBackColor = true;
+            this.txtMonto.BackColor = System.Drawing.SystemColors.Control;
+            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMonto.Location = new System.Drawing.Point(247, 748);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMonto.MaxLength = 11;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(178, 39);
+            this.txtMonto.TabIndex = 128;
             // 
-            // label10
+            // label18
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label10.Location = new System.Drawing.Point(278, 547);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(54, 32);
-            this.label10.TabIndex = 122;
-            this.label10.Text = "EKG";
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label18.Location = new System.Drawing.Point(242, 716);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(86, 32);
+            this.label18.TabIndex = 129;
+            this.label18.Text = "Monto:";
             // 
-            // chkbxECG
+            // cbMetodoPago
             // 
-            this.chkbxECG.AutoSize = true;
-            this.chkbxECG.Location = new System.Drawing.Point(256, 610);
-            this.chkbxECG.Name = "chkbxECG";
-            this.chkbxECG.Size = new System.Drawing.Size(18, 17);
-            this.chkbxECG.TabIndex = 125;
-            this.chkbxECG.UseVisualStyleBackColor = true;
+            this.cbMetodoPago.BackColor = System.Drawing.SystemColors.Control;
+            this.cbMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMetodoPago.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMetodoPago.FormattingEnabled = true;
+            this.cbMetodoPago.Items.AddRange(new object[] {
+            "Transferencia",
+            "Efectivo",
+            "Pago Movil"});
+            this.cbMetodoPago.Location = new System.Drawing.Point(38, 748);
+            this.cbMetodoPago.Margin = new System.Windows.Forms.Padding(4);
+            this.cbMetodoPago.Name = "cbMetodoPago";
+            this.cbMetodoPago.Size = new System.Drawing.Size(194, 40);
+            this.cbMetodoPago.TabIndex = 130;
             // 
-            // label16
+            // label19
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label16.Location = new System.Drawing.Point(278, 596);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(57, 32);
-            this.label16.TabIndex = 124;
-            this.label16.Text = "ECG";
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label19.Location = new System.Drawing.Point(32, 712);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(188, 32);
+            this.label19.TabIndex = 131;
+            this.label19.Text = "Metodo de pago:";
             // 
-            // chkbxEvalCardiovascular
+            // label20
             // 
-            this.chkbxEvalCardiovascular.AutoSize = true;
-            this.chkbxEvalCardiovascular.Location = new System.Drawing.Point(253, 654);
-            this.chkbxEvalCardiovascular.Name = "chkbxEvalCardiovascular";
-            this.chkbxEvalCardiovascular.Size = new System.Drawing.Size(18, 17);
-            this.chkbxEvalCardiovascular.TabIndex = 127;
-            this.chkbxEvalCardiovascular.UseVisualStyleBackColor = true;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label20.Location = new System.Drawing.Point(269, 817);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(168, 32);
+            this.label20.TabIndex = 132;
+            this.label20.Text = "Pago realizado:";
             // 
-            // label17
+            // rbPagoRealizadoSi
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label17.Location = new System.Drawing.Point(275, 640);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(214, 32);
-            this.label17.TabIndex = 126;
-            this.label17.Text = "Eval. Cardiovascular";
+            this.rbPagoRealizadoSi.AutoSize = true;
+            this.rbPagoRealizadoSi.Location = new System.Drawing.Point(283, 853);
+            this.rbPagoRealizadoSi.Name = "rbPagoRealizadoSi";
+            this.rbPagoRealizadoSi.Size = new System.Drawing.Size(41, 21);
+            this.rbPagoRealizadoSi.TabIndex = 133;
+            this.rbPagoRealizadoSi.TabStop = true;
+            this.rbPagoRealizadoSi.Text = "Si";
+            this.rbPagoRealizadoSi.UseVisualStyleBackColor = true;
+            // 
+            // rbPagoRealizadoNo
+            // 
+            this.rbPagoRealizadoNo.AutoSize = true;
+            this.rbPagoRealizadoNo.Location = new System.Drawing.Point(335, 853);
+            this.rbPagoRealizadoNo.Name = "rbPagoRealizadoNo";
+            this.rbPagoRealizadoNo.Size = new System.Drawing.Size(47, 21);
+            this.rbPagoRealizadoNo.TabIndex = 134;
+            this.rbPagoRealizadoNo.TabStop = true;
+            this.rbPagoRealizadoNo.Text = "No";
+            this.rbPagoRealizadoNo.UseVisualStyleBackColor = true;
+            // 
+            // txtComentarios
+            // 
+            this.txtComentarios.BackColor = System.Drawing.SystemColors.Control;
+            this.txtComentarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentarios.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComentarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtComentarios.Location = new System.Drawing.Point(38, 934);
+            this.txtComentarios.Margin = new System.Windows.Forms.Padding(4);
+            this.txtComentarios.MaxLength = 11;
+            this.txtComentarios.Multiline = true;
+            this.txtComentarios.Name = "txtComentarios";
+            this.txtComentarios.Size = new System.Drawing.Size(380, 86);
+            this.txtComentarios.TabIndex = 135;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label21.Location = new System.Drawing.Point(33, 902);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(147, 32);
+            this.label21.TabIndex = 136;
+            this.label21.Text = "Comentarios:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(37, 852);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 137;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label22.Location = new System.Drawing.Point(32, 817);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(185, 32);
+            this.label22.TabIndex = 138;
+            this.label22.Text = "Hora de entrada:";
             // 
             // frmCitasMedicas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1425, 1055);
+            this.ClientSize = new System.Drawing.Size(1176, 1055);
             this.Controls.Add(this.dataListado);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.PanelIngreso);
@@ -829,5 +985,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox chkbxEvalCardiovascular;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtComentarios;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.RadioButton rbPagoRealizadoNo;
+        private System.Windows.Forms.RadioButton rbPagoRealizadoSi;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ComboBox cbMetodoPago;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtMonto;
+        private System.Windows.Forms.Label label18;
     }
 }
