@@ -41,6 +41,17 @@
             this.btnImprimir = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.PanelIngreso = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtComentarios = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.rbPagoRealizadoNo = new System.Windows.Forms.RadioButton();
+            this.rbPagoRealizadoSi = new System.Windows.Forms.RadioButton();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cbMetodoPago = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtMonto = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.chkbxEvalCardiovascular = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.chkbxECG = new System.Windows.Forms.CheckBox();
@@ -76,17 +87,6 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtMonto = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.cbMetodoPago = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.rbPagoRealizadoSi = new System.Windows.Forms.RadioButton();
-            this.rbPagoRealizadoNo = new System.Windows.Forms.RadioButton();
-            this.txtComentarios = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.panel4.SuspendLayout();
             this.PanelIngreso.SuspendLayout();
@@ -287,6 +287,7 @@
             // 
             // PanelIngreso
             // 
+            this.PanelIngreso.AutoScroll = true;
             this.PanelIngreso.BackColor = System.Drawing.Color.White;
             this.PanelIngreso.Controls.Add(this.label22);
             this.PanelIngreso.Controls.Add(this.dateTimePicker1);
@@ -336,6 +337,139 @@
             this.PanelIngreso.Name = "PanelIngreso";
             this.PanelIngreso.Size = new System.Drawing.Size(499, 1055);
             this.PanelIngreso.TabIndex = 38;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label22.Location = new System.Drawing.Point(32, 817);
+            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(185, 32);
+            this.label22.TabIndex = 138;
+            this.label22.Text = "Hora de entrada:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(37, 852);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
+            this.dateTimePicker1.TabIndex = 137;
+            // 
+            // txtComentarios
+            // 
+            this.txtComentarios.BackColor = System.Drawing.SystemColors.Control;
+            this.txtComentarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtComentarios.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComentarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtComentarios.Location = new System.Drawing.Point(38, 934);
+            this.txtComentarios.Margin = new System.Windows.Forms.Padding(4);
+            this.txtComentarios.MaxLength = 11;
+            this.txtComentarios.Multiline = true;
+            this.txtComentarios.Name = "txtComentarios";
+            this.txtComentarios.Size = new System.Drawing.Size(380, 86);
+            this.txtComentarios.TabIndex = 135;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label21.Location = new System.Drawing.Point(33, 902);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(147, 32);
+            this.label21.TabIndex = 136;
+            this.label21.Text = "Comentarios:";
+            // 
+            // rbPagoRealizadoNo
+            // 
+            this.rbPagoRealizadoNo.AutoSize = true;
+            this.rbPagoRealizadoNo.Location = new System.Drawing.Point(335, 853);
+            this.rbPagoRealizadoNo.Name = "rbPagoRealizadoNo";
+            this.rbPagoRealizadoNo.Size = new System.Drawing.Size(47, 21);
+            this.rbPagoRealizadoNo.TabIndex = 134;
+            this.rbPagoRealizadoNo.TabStop = true;
+            this.rbPagoRealizadoNo.Text = "No";
+            this.rbPagoRealizadoNo.UseVisualStyleBackColor = true;
+            // 
+            // rbPagoRealizadoSi
+            // 
+            this.rbPagoRealizadoSi.AutoSize = true;
+            this.rbPagoRealizadoSi.Location = new System.Drawing.Point(283, 853);
+            this.rbPagoRealizadoSi.Name = "rbPagoRealizadoSi";
+            this.rbPagoRealizadoSi.Size = new System.Drawing.Size(41, 21);
+            this.rbPagoRealizadoSi.TabIndex = 133;
+            this.rbPagoRealizadoSi.TabStop = true;
+            this.rbPagoRealizadoSi.Text = "Si";
+            this.rbPagoRealizadoSi.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label20.Location = new System.Drawing.Point(269, 817);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(168, 32);
+            this.label20.TabIndex = 132;
+            this.label20.Text = "Pago realizado:";
+            // 
+            // cbMetodoPago
+            // 
+            this.cbMetodoPago.BackColor = System.Drawing.SystemColors.Control;
+            this.cbMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMetodoPago.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMetodoPago.FormattingEnabled = true;
+            this.cbMetodoPago.Items.AddRange(new object[] {
+            "Transferencia",
+            "Efectivo",
+            "Pago Movil"});
+            this.cbMetodoPago.Location = new System.Drawing.Point(38, 748);
+            this.cbMetodoPago.Margin = new System.Windows.Forms.Padding(4);
+            this.cbMetodoPago.Name = "cbMetodoPago";
+            this.cbMetodoPago.Size = new System.Drawing.Size(194, 40);
+            this.cbMetodoPago.TabIndex = 130;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label19.Location = new System.Drawing.Point(32, 712);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(188, 32);
+            this.label19.TabIndex = 131;
+            this.label19.Text = "Metodo de pago:";
+            // 
+            // txtMonto
+            // 
+            this.txtMonto.BackColor = System.Drawing.SystemColors.Control;
+            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMonto.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtMonto.Location = new System.Drawing.Point(247, 748);
+            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
+            this.txtMonto.MaxLength = 11;
+            this.txtMonto.Name = "txtMonto";
+            this.txtMonto.Size = new System.Drawing.Size(178, 39);
+            this.txtMonto.TabIndex = 128;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label18.Location = new System.Drawing.Point(242, 716);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(86, 32);
+            this.label18.TabIndex = 129;
+            this.label18.Text = "Monto:";
             // 
             // chkbxEvalCardiovascular
             // 
@@ -780,139 +914,6 @@
             this.label8.Size = new System.Drawing.Size(67, 32);
             this.label8.TabIndex = 54;
             this.label8.Text = "Sexo:";
-            // 
-            // txtMonto
-            // 
-            this.txtMonto.BackColor = System.Drawing.SystemColors.Control;
-            this.txtMonto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMonto.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMonto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtMonto.Location = new System.Drawing.Point(247, 748);
-            this.txtMonto.Margin = new System.Windows.Forms.Padding(4);
-            this.txtMonto.MaxLength = 11;
-            this.txtMonto.Name = "txtMonto";
-            this.txtMonto.Size = new System.Drawing.Size(178, 39);
-            this.txtMonto.TabIndex = 128;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label18.Location = new System.Drawing.Point(242, 716);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(86, 32);
-            this.label18.TabIndex = 129;
-            this.label18.Text = "Monto:";
-            // 
-            // cbMetodoPago
-            // 
-            this.cbMetodoPago.BackColor = System.Drawing.SystemColors.Control;
-            this.cbMetodoPago.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMetodoPago.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMetodoPago.FormattingEnabled = true;
-            this.cbMetodoPago.Items.AddRange(new object[] {
-            "Transferencia",
-            "Efectivo",
-            "Pago Movil"});
-            this.cbMetodoPago.Location = new System.Drawing.Point(38, 748);
-            this.cbMetodoPago.Margin = new System.Windows.Forms.Padding(4);
-            this.cbMetodoPago.Name = "cbMetodoPago";
-            this.cbMetodoPago.Size = new System.Drawing.Size(194, 40);
-            this.cbMetodoPago.TabIndex = 130;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label19.Location = new System.Drawing.Point(32, 712);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(188, 32);
-            this.label19.TabIndex = 131;
-            this.label19.Text = "Metodo de pago:";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label20.Location = new System.Drawing.Point(269, 817);
-            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(168, 32);
-            this.label20.TabIndex = 132;
-            this.label20.Text = "Pago realizado:";
-            // 
-            // rbPagoRealizadoSi
-            // 
-            this.rbPagoRealizadoSi.AutoSize = true;
-            this.rbPagoRealizadoSi.Location = new System.Drawing.Point(283, 853);
-            this.rbPagoRealizadoSi.Name = "rbPagoRealizadoSi";
-            this.rbPagoRealizadoSi.Size = new System.Drawing.Size(41, 21);
-            this.rbPagoRealizadoSi.TabIndex = 133;
-            this.rbPagoRealizadoSi.TabStop = true;
-            this.rbPagoRealizadoSi.Text = "Si";
-            this.rbPagoRealizadoSi.UseVisualStyleBackColor = true;
-            // 
-            // rbPagoRealizadoNo
-            // 
-            this.rbPagoRealizadoNo.AutoSize = true;
-            this.rbPagoRealizadoNo.Location = new System.Drawing.Point(335, 853);
-            this.rbPagoRealizadoNo.Name = "rbPagoRealizadoNo";
-            this.rbPagoRealizadoNo.Size = new System.Drawing.Size(47, 21);
-            this.rbPagoRealizadoNo.TabIndex = 134;
-            this.rbPagoRealizadoNo.TabStop = true;
-            this.rbPagoRealizadoNo.Text = "No";
-            this.rbPagoRealizadoNo.UseVisualStyleBackColor = true;
-            // 
-            // txtComentarios
-            // 
-            this.txtComentarios.BackColor = System.Drawing.SystemColors.Control;
-            this.txtComentarios.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtComentarios.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComentarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtComentarios.Location = new System.Drawing.Point(38, 934);
-            this.txtComentarios.Margin = new System.Windows.Forms.Padding(4);
-            this.txtComentarios.MaxLength = 11;
-            this.txtComentarios.Multiline = true;
-            this.txtComentarios.Name = "txtComentarios";
-            this.txtComentarios.Size = new System.Drawing.Size(380, 86);
-            this.txtComentarios.TabIndex = 135;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label21.Location = new System.Drawing.Point(33, 902);
-            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(147, 32);
-            this.label21.TabIndex = 136;
-            this.label21.Text = "Comentarios:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(37, 852);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 137;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label22.Location = new System.Drawing.Point(32, 817);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(185, 32);
-            this.label22.TabIndex = 138;
-            this.label22.Text = "Hora de entrada:";
             // 
             // frmCitasMedicas
             // 
