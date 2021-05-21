@@ -162,19 +162,11 @@ namespace Presentacion
             paciente.Email = this.txtCorreo.Text;
             paciente.Peso = this.txtPeso.Text;
             paciente.Estatura = this.txtTalla.Text;
-
+            //todo
+            citaMedica.FechaDeAtencion = DateTime.Today;
             citaMedica.Paciente = paciente;
-            System.Data.DataTable pacientesExistentes = MPacientes.BuscarCedula(paciente.Cedula);
-            if (pacientesExistentes.Rows.Count == 0)
-            {
-                mCitaMedica.Insert(citaMedica);
-            }
-            else 
-            {
-                paciente.Id = pacientesExistentes.Rows[0]["id"].ToString();
-                //todo
-            }
-
+            mCitaMedica.Insert(citaMedica);
+            
         }
 
         private void Cuadernito_Load(object sender, EventArgs e)
