@@ -1,17 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Metodos;
+using Datos;
 
 namespace Presentacion
 {
     public partial class frmCitasMedicas : Form
     {
+
+        private bool IsNuevo = false;
+
+        private bool IsEditar = false;
+
+        private LimitantesDeIngreso validador = new LimitantesDeIngreso();
+
+        private MCitaMedica mCitaMedica = new MCitaMedica();
+
         public frmCitasMedicas()
         {
             InitializeComponent();
@@ -69,6 +74,99 @@ namespace Presentacion
         }
 
 
+        //Habilitar los botones 
+        private void Botones()
+        {
+            if (this.IsNuevo)
+            {
+                this.Habilitar();
+                this.btnNuevo.Enabled = false;
+                this.btnGuardar.Enabled = true;
+                this.btnCancelar.Enabled = true;
+
+            }
+            else if (this.IsEditar)
+            {
+                this.Habilitar();
+                this.cbCedula.Enabled = false;
+                this.txtCiPaciente.Enabled = false;
+                this.btnNuevo.Enabled = false;
+                this.btnGuardar.Enabled = true;
+                this.btnCancelar.Enabled = true;
+            }
+            else
+            {
+                this.Deshabilitar();
+                this.btnNuevo.Enabled = true;
+                this.btnGuardar.Enabled = false;
+                this.btnCancelar.Enabled = false;
+            }
+        }
+
+        //Limpiar todos los campos
+        private void Limpiar()
+        {
+            this.cbCedula.SelectedIndex = -1;
+            this.txtCiPaciente.Text = string.Empty;
+            this.txtNombre.Text = string.Empty;
+            this.cbSexo.SelectedIndex = -1;
+            this.dtNacimiento.Text = string.Empty;
+            this.txtTelefono.Text = string.Empty;
+            this.txtCorreo.Text = string.Empty;
+            this.txtPeso.Text = string.Empty;
+            this.txtTalla.Text = string.Empty;
+        }
+
+        private void SinErrores()
+        {
+            //todo add this component
+            //errorProvider1.Clear();
+        }
+
+        private bool validar()
+        {
+
+            bool error = true;
+
+            if (cbCedula.SelectedIndex == -1)
+            {
+                error = false;
+                //todo add validations
+                //errorProvider1.SetError(cbCedula, "Seleccione el tipo de Cedula del paciente");
+            }
+
+            return error;
+        }
+
+        //Mostrar mensaje de confirmacion
+        private void MensajeOk(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Sistema de Historias Clinicas - Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Mostrar mensaje de error
+        private void MensajeError(string mensaje)
+        {
+            MessageBox.Show(mensaje, "Sistema de Historias Clinicas - Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void Guardar() 
+        {
+            //paciente
+            DAOCitaMedica.Paciente paciente = new DAOCitaMedica.Paciente();
+            paciente.Cedula = this.cbCedula.Text + this.txtCiPaciente.Text;
+            paciente.Nombre = this.txtNombre.Text;
+            paciente.Sexo = this.cbSexo.Text;
+            paciente.fechaDeNacimiento = Convert.ToDateTime(dtNacimiento.Text);
+            paciente.Telefono = this.txtTelefono.Text;
+            paciente.Email = this.txtCorreo.Text;
+            paciente.Peso = this.txtPeso.Text;
+            paciente.Estatura = this.txtTalla.Text;
+
+
+            mCitaMedica.Insert(paciente);
+
+        }
 
         private void Cuadernito_Load(object sender, EventArgs e)
         {
@@ -114,6 +212,38 @@ namespace Presentacion
         {
             
             this.Habilitar();
+        }
+
+        private void btnExpandir_Click(object sender, EventArgs e)
+        {
+            Expandir();
+        }
+
+        private void btnContraer_Click(object sender, EventArgs e)
+        {
+            Contraer();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            SinErrores();
+            if (!validar())
+            {
+                MensajeError("Falta ingresar algunos datos, serán remarcados");
+            }
+            else
+            {
+                Guardar();
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Deshabilitar();
         }
     }
 }
