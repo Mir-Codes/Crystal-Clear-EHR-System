@@ -11,7 +11,7 @@ namespace Datos
     public class DAOCitaMedica : Conexion
     {
 
-        public void Insert(Paciente paciente)
+        public void Insert(CitaMedica citaMedica)
         {
             string rpta = "";
             SqlConnection SqlCon = new SqlConnection();
@@ -31,7 +31,7 @@ namespace Datos
                 ParCedula.ParameterName = "@cedula";
                 ParCedula.SqlDbType = SqlDbType.VarChar;
                 ParCedula.Size = 50;
-                ParCedula.Value = paciente.Cedula;
+                ParCedula.Value = citaMedica.Paciente.Cedula;
                 SqlCmd.Parameters.Add(ParCedula);
 
 
@@ -55,9 +55,12 @@ namespace Datos
         public class CitaMedica
         {
             public string Id { get; set; }
+            public int NumeroDeTurno { get; set; }
             public Paciente Paciente { get; set; }
-            public List<TipoDeEstudios> tiposDeEstudios {get;set;}
-            public List<MetodoDePago> metodosDePagos { get; set; }
+            public List<TipoDeEstudios> TiposDeEstudios {get;set;}
+            public List<MetodoDePago> MetodosDePagos { get; set; }
+            public DateTime FechaDeAtencion { get; set; }
+            public DateTime HoraDeAtencion { get; set; }
         }
 
         public class Paciente
@@ -66,7 +69,7 @@ namespace Datos
             public string Cedula { get; set; }
             public string Nombre { get; set; }
             public string Sexo { get; set; }
-            public DateTime fechaDeNacimiento { get; set; }
+            public DateTime FechaDeNacimiento { get; set; }
             public string Telefono { get; set; }
             public string Email { get; set; }
             public string Peso { get; set; }
@@ -77,14 +80,14 @@ namespace Datos
         public class TipoDeEstudios 
         { 
             public string Id { get; set; }
-            public string nombre { get; set; }
+            public string Nombre { get; set; }
         }
 
         public class MetodoDePago {
 
             public string Id { get; set; }
-            public string nombre { get; set; }
-            public decimal monto { get; set; }
+            public string Nombre { get; set; }
+            public decimal Monto { get; set; }
         }
         
     }

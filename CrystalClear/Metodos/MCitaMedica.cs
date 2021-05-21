@@ -17,9 +17,9 @@ namespace Metodos
             daoCitaMedica = new DAOCitaMedica();
         }
 
-        public void Insert(DAOCitaMedica.Paciente paciente) {
+        public void Insert(DAOCitaMedica.CitaMedica citaMedica) {
 
-            daoCitaMedica.Insert(paciente);
+            daoCitaMedica.Insert(citaMedica);
         }
 
 

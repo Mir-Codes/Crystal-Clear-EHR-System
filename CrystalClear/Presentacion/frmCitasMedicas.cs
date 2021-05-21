@@ -152,19 +152,28 @@ namespace Presentacion
 
         private void Guardar() 
         {
-            //paciente
+            DAOCitaMedica.CitaMedica citaMedica = new DAOCitaMedica.CitaMedica();
             DAOCitaMedica.Paciente paciente = new DAOCitaMedica.Paciente();
             paciente.Cedula = this.cbCedula.Text + this.txtCiPaciente.Text;
             paciente.Nombre = this.txtNombre.Text;
             paciente.Sexo = this.cbSexo.Text;
-            paciente.fechaDeNacimiento = Convert.ToDateTime(dtNacimiento.Text);
+            paciente.FechaDeNacimiento = Convert.ToDateTime(dtNacimiento.Text);
             paciente.Telefono = this.txtTelefono.Text;
             paciente.Email = this.txtCorreo.Text;
             paciente.Peso = this.txtPeso.Text;
             paciente.Estatura = this.txtTalla.Text;
 
-
-            mCitaMedica.Insert(paciente);
+            citaMedica.Paciente = paciente;
+            System.Data.DataTable pacientesExistentes = MPacientes.BuscarCedula(paciente.Cedula);
+            if (pacientesExistentes.Rows.Count == 0)
+            {
+                mCitaMedica.Insert(citaMedica);
+            }
+            else 
+            {
+                paciente.Id = pacientesExistentes.Rows[0]["id"].ToString();
+                //todo
+            }
 
         }
 
