@@ -52,8 +52,17 @@ namespace Datos
             //return rpta; //
         }
 
+        public class CitaMedica
+        {
+            public string Id { get; set; }
+            public Paciente Paciente { get; set; }
+            public List<TipoDeEstudios> tiposDeEstudios {get;set;}
+            public List<MetodoDePago> metodosDePagos { get; set; }
+        }
+
         public class Paciente
         {
+            public string Id { get; set; }
             public string Cedula { get; set; }
             public string Nombre { get; set; }
             public string Sexo { get; set; }
@@ -64,6 +73,19 @@ namespace Datos
             public string Estatura { get; set; }
         }
 
+
+        public class TipoDeEstudios 
+        { 
+            public string Id { get; set; }
+            public string nombre { get; set; }
+        }
+
+        public class MetodoDePago {
+
+            public string Id { get; set; }
+            public string nombre { get; set; }
+            public decimal monto { get; set; }
+        }
         
     }
 }
